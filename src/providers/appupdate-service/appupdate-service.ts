@@ -40,7 +40,7 @@ export class AppUpdateService {
                     ]
                 }).present();
             } else {
-
+               
             }
         })
     }

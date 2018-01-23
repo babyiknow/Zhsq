@@ -40,8 +40,8 @@ export class MyApp {
       }
       this.appVersion.getVersionNumber().then(value => {
         this.versionNum = value;
-        if (!this.isIos) {
-          this.appupdateService.checkUpdate(value);
+        if (!this.isIos) {      
+          this.appupdateService.checkUpdate(value.split(',').join(""));
           //this.isIos=false;
         }
       });

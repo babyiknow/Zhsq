@@ -1889,6 +1889,7 @@ var AppUpdateService = (function () {
                 }).present();
             }
             else {
+                alert("失败");
             }
         });
     };
@@ -2192,7 +2193,7 @@ var MyApp = (function () {
             _this.appVersion.getVersionNumber().then(function (value) {
                 _this.versionNum = value;
                 if (!_this.isIos) {
-                    _this.appupdateService.checkUpdate(value);
+                    _this.appupdateService.checkUpdate(value.split(',').join(""));
                     //this.isIos=false;
                 }
             });

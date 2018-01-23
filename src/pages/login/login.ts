@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController,LoadingController,Platform} from 'ionic-angular';
-import { TabsPage } from "../tabs/tabs";
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppConfig } from '../../app/app.config';
 import{BackButtonService } from "../../providers/buttonback-service/buttonback-service";
+import {App } from 'ionic-angular';  
+import { TabsPage } from '../tabs/tabs';  
+//import { HTTP } from '@ionic-native/http';
 /**
  * Generated class for the LoginPage page.
  *
@@ -24,9 +26,8 @@ declare function escape(s:string): string;
 
 export class LoginPage {
   loginForm;
-  
   constructor(platform:Platform,private formBuilder:FormBuilder,public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public http: HttpClient,
- public loadingCtrl: LoadingController,private backButtonService:BackButtonService) {
+ public loadingCtrl: LoadingController,private backButtonService:BackButtonService,private app:App) {
     this.loginForm = this.formBuilder.group({
       'userName': ['', [Validators.required]],  
       'password': ['', [Validators.required]]
@@ -62,10 +63,13 @@ export class LoginPage {
         window.localStorage.setItem('userphoto',data["Data"]["Photo"]);
         window.localStorage.setItem('usercommunity',data["Data"]["CommunityName"]);
         window.localStorage.setItem('isLogin','login');
+        window.localStorage.setItem('baseMapAddress',data["Data"]["BaseMapAddress"]);
+        window.localStorage.setItem('time',String((new Date()).getTime()));
         AppConfig.setBaseMapAddress(data["Data"]["BaseMapAddress"]);
         setTimeout(()=>{
          // this.navCtrl.popTo();
-          this.navCtrl.push(TabsPage);
+          //this.navCtrl.push(TabsPage);
+          this.app.getRootNav().setRoot(TabsPage);  
         },200)
        
       }
@@ -78,7 +82,6 @@ export class LoginPage {
         toast.present();
       }     
     },err=>{
-      alert(JSON.stringify(err));
       loading.dismiss();
       let toast = this.toastCtrl.create({
         message: '连接服务器失败',

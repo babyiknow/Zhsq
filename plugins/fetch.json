@@ -18,7 +18,7 @@
   "cordova-plugin-device": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-device@1.1.4"
+      "id": "cordova-plugin-device@^1.1.4"
     },
     "is_top_level": true,
     "variables": {}
@@ -58,7 +58,7 @@
   "cordova-plugin-file": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-file@5.0.0"
+      "id": "cordova-plugin-file@^5.0.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -115,6 +115,38 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-file-opener2@^2.0.19"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-advanced-http": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-advanced-http"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-background-mode": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-background-mode"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-mauron85-background-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-mauron85-background-geolocation@2.3.3"
     },
     "is_top_level": true,
     "variables": {}

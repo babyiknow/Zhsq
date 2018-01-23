@@ -33,7 +33,7 @@
                 <button ion-item >人口统计</button>
             </ion-list>
         </div>
-        <div class="mui-content-padded" style="height: 150px;">
+        <div class="mui-content-padded" style="height: 150px;"  *ngIf="!isIos">
             <!-- <div class="mui-btn mui-btn-block mui-btn-red" id="logoff">安全退出</div> -->
             <button ion-button full color="danger" (click)="logOff()">安全退出</button>
         </div>

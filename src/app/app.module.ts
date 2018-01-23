@@ -33,7 +33,11 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { BackButtonService } from '../providers/buttonback-service/buttonback-service';
 import { AppUpdateService } from "../providers/appupdate-service/appupdate-service";
 import { PicturePage } from "../pages/picture/picture";
+import { Network } from '@ionic-native/network';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+//import { HTTP } from '@ionic-native/http';
 import{AppConfig} from './app.config';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -84,12 +88,15 @@ import{AppConfig} from './app.config';
     SplashScreen,
     Geolocation,
     File,
+    BackgroundGeolocation,
     FileOpener,
     AppVersion,
     AppUpdate,
     FileTransfer,
     Camera,
     Media,
+   // HTTP,
+    Network,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DepartmentServiceProvider,
     UserServiceProvider,

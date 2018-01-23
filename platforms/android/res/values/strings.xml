@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">智慧石油路</string>
+    <string name="app_name">智慧巡检</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
+    <string name="account_name">@string/app_name</string>
+    <string name="account_type">com.dcqtech.zhsyl.account</string>
+    <string name="content_authority">com.dcqtech.zhsyl</string>
 </resources>

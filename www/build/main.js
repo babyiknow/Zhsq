@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45,7 +45,7 @@ var CarListPage = (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54,7 +54,7 @@ var CarListPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_file__ = __webpack_require__(45);
@@ -259,6 +259,7 @@ var DealEventPage = (function () {
             toast.present();
             setTimeout(function () {
                 _this.navCtrl.pop();
+                //this.navCtrl.popTo("DetailEventPage");
             }, 1000); //刷新
         }, function (err) {
         });
@@ -278,14 +279,14 @@ var DealEventPage = (function () {
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PicturePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_config__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -326,7 +327,7 @@ var PicturePage = (function () {
     };
     PicturePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-picture',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\picture\picture.html"*/'<!--\n  Generated template for the PicturePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>picture</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content >\n    <ion-slides pager style="background:rgba(0, 0, 0, 0.8)">\n        <ion-slide *ngFor="let pic of pictures">\n         <img [src]="pic" *ngIf="pic.indexOf(\'.mp3\')<0">\n         <!-- <audio src="{{pic}}" class="audio"  controls  *ngIf="pic.indexOf(\'.mp3\')>-1" loop onended="javascript:alert(111)"></audio> -->\n        </ion-slide>\n      </ion-slides>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\picture\picture.html"*/,
+            selector: 'page-picture',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\picture\picture.html"*/'<!--\n  Generated template for the PicturePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>图片预览</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-slides pager style="background:rgba(0, 0, 0, 0.8)">\n    <ion-slide *ngFor="let pic of pictures">\n      <img [src]="pic" *ngIf="pic.indexOf(\'.mp3\')<0">\n      <!-- <audio src="{{pic}}" class="audio"  controls  *ngIf="pic.indexOf(\'.mp3\')>-1" loop onended="javascript:alert(111)"></audio> -->\n    </ion-slide>\n  </ion-slides>\n</ion-content>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\picture\picture.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], PicturePage);
@@ -337,7 +338,7 @@ var PicturePage = (function () {
 
 /***/ }),
 
-/***/ 112:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -345,7 +346,7 @@ var PicturePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -443,17 +444,18 @@ var EventListPage = (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__ = __webpack_require__(285);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__ = __webpack_require__(178);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -470,15 +472,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http) {
+    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http, backgroundGeolocation) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.toastCtrl = toastCtrl;
         this.alertCtrl = alertCtrl;
+        this.platform = platform;
         this.geolocation = geolocation;
         this.http = http;
+        this.backgroundGeolocation = backgroundGeolocation;
         platform.ready().then(function () {
+            _this.PI = 3.14159265358979324;
             _this.imgSrc = "assets/imgs/startCheck.png";
             _this.isCheck = false;
             _this.lastX = 0;
@@ -489,9 +495,49 @@ var HomePage = (function () {
                 Y: 0
             };
             _this.truePts = [];
+            _this.configureBackgroundGeoLocation();
+            // platform.pause.subscribe(() => {
+            //   if (this.isCheck) {
+            //     this.watchId.unsubscribe();
+            //     this.watchId = null;
+            //     //this.backgroundGeolocation.start();
+            //   }
+            // });
+            // platform.resume.subscribe(() => {
+            //   if (this.isCheck) {
+            //     //this.backgroundGeolocation.stop();
+            //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
+            //       this.getPositionSuccess(position.coords);
+            //     }, err => {
+            //       alert(err.message)
+            //     });
+            //   }
+            // })
             _this.loadEsri();
         });
     }
+    HomePage.prototype.configureBackgroundGeoLocation = function () {
+        var _this = this;
+        var config = {
+            desiredAccuracy: 0,
+            stationaryRadius: 10,
+            distanceFilter: 2,
+            interval: 1000,
+            fastestInterval: 2000,
+            notificationTitle: '智慧石油路',
+            notificationText: '巡检中',
+            activityType: 'AutomotiveNavigation',
+            //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+            stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+        };
+        this.backgroundGeolocation.configure(config)
+            .subscribe(function (location) {
+            _this.getPositionSuccess(location);
+            if (_this.platform.is("ios")) {
+                _this.backgroundGeolocation.finish(); // FOR IOS ONLY
+            }
+        }, function (err) { alert(err.message); });
+    };
     HomePage.prototype.position = function () {
         var _this = this;
         this.geolocation.getCurrentPosition({ timeout: 5000, enableHighAccuracy: true }).then(function (pos) {
@@ -505,103 +551,85 @@ var HomePage = (function () {
                 postionLayer.add(graphic);
                 _this.map.centerAt(point);
             }).catch(function (err) {
-                var alert = _this.alertCtrl.create({
-                    title: '提示',
-                    message: err.message,
-                    buttons: ["确定"]
-                });
-                alert.present();
+                _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
             });
         }).catch(function (err) {
-            var alert = _this.alertCtrl.create({
-                title: '提示',
-                message: err.message,
-                buttons: ["确定"]
-            });
-            alert.present();
+            _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
         });
     };
+    HomePage.prototype.stopInspection = function () {
+        this.watchId.unsubscribe();
+        this.watchId = null;
+        this.lastX = 0;
+        this.lastY = 0;
+        this.trueDistance = 0;
+        this.truePt = {
+            X: 0,
+            Y: 0
+        };
+        this.truePts = [];
+    };
     HomePage.prototype.watchPosition = function () {
-        var _this = this;
         if (this.isCheck) {
             this.imgSrc = "assets/imgs/startCheck.png";
-            this.isCheck = !this.isCheck;
-            this.watchId.unsubscribe();
+            var pt = this.truePts[this.truePts.length - 1];
+            if (pt && pt.X && pt.Y) {
+                var item = {
+                    X: pt.X,
+                    Y: pt.Y,
+                    Distance: 0,
+                    PDate: this.getDateStr(),
+                    Remark: "stop"
+                };
+                this.sendPostion(item);
+            }
+            this.stopInspection();
+            this.backgroundGeolocation.stop();
             clearInterval(this.postId);
+            this.postId = null;
         }
         else {
-            this.isCheck = !this.isCheck;
             this.imgSrc = "assets/imgs/endCheck.gif";
-            Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/geometry/Polyline", "esri/symbols/SimpleLineSymbol", "esri/graphic", "esri/Color", "esri/geometry/geometryEngine"]).then(function (_a) {
-                var Point = _a[0], Polyline = _a[1], SimpleLineSymbol = _a[2], Graphic = _a[3], Color = _a[4], geometryEngine = _a[5];
-                _this.watchId = _this.geolocation.watchPosition({ maximumAge: 10000000, timeout: 5000, enableHighAccuracy: true }).subscribe(function (position) {
-                    var tempTime = (new Date()).getTime();
-                    if (!_this.isCheck) {
-                        return;
-                    }
-                    if (position.coords !== undefined) {
-                        var offX = Math.abs(_this.lastX - position.coords.longitude);
-                        var offY = Math.abs(_this.lastY - position.coords.latitude);
-                        if (offX < 0.001 && offY < 0.001) {
-                            //太近了 舍弃
-                            return;
-                        }
-                        if (_this.lastX != _this.lastY) {
-                            var distance = geometryEngine.distance(new Point(_this.lastX, _this.lastY), new Point(position.coords.longitude, position.coords.latitude), 9001);
-                            var time = (tempTime - _this.lastDateTime);
-                            _this.toastCtrl.create({ message: String(time), duration: 500 }).present();
-                            if (distance <= 5 * time / 1000) {
-                                _this.truePts.push({ X: position.coords.longitude, Y: position.coords.latitude, isPost: false });
-                                if (_this.truePts.length > 2) {
-                                    _this.truePts.splice(0, 1);
-                                }
-                                if (_this.truePts.length == 2) {
-                                    var polyline = new Polyline([[_this.truePts[0].X, _this.truePts[0].Y], [_this.truePts[1].X, _this.truePts[1].Y]]);
-                                    var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 3);
-                                    var graphic = new Graphic(polyline, lineSymbol);
-                                    var walkLayer = _this.map.getLayer("walkLayer");
-                                    walkLayer.add(graphic);
-                                    _this.trueDistance = geometryEngine.distance(new Point(_this.truePts[0].X, _this.truePts[0].Y), new Point(_this.truePts[1].X, _this.truePts[1].Y), 9001);
-                                    var point = new Point(_this.truePts[1].X, _this.truePts[1].Y, _this.map.spatialReference);
-                                    var postionLayer = _this.map.getLayer("postionLayer");
-                                    var grap = postionLayer.graphics[0];
-                                    grap.setGeometry(point);
-                                    _this.map.centerAt(point);
-                                }
-                            }
-                            _this.lastDateTime = tempTime;
-                            _this.lastX = position.coords.longitude;
-                            _this.lastY = position.coords.latitude;
-                        }
-                    }
-                });
-                _this.postId = setInterval(function () {
-                    if (_this.truePts.length < 1) {
-                        return;
-                    }
-                    var distance = 0;
-                    if (_this.truePts.length == 1) {
-                        distance = 0;
-                    }
-                    else {
-                        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/geometry/geometryEngine"]).then(function (_a) {
-                            var Point = _a[0], geometryEngine = _a[1];
-                            distance = geometryEngine.distance(new Point(_this.truePts[0].X, _this.truePts[0].Y), new Point(_this.truePts[1].X, _this.truePts[1].Y), 9001);
-                        });
-                    }
-                    var pt = _this.truePts[_this.truePts.length - 1];
-                    if (!pt.isPost) {
-                        var item = {
-                            X: pt.X,
-                            Y: pt.Y,
-                            Distance: distance,
-                            Date: _this.getDateStr()
-                        };
-                        _this.sendPostion(item);
-                    }
-                }, 10000);
-            });
+            this.startInspection();
+            this.backgroundGeolocation.start();
+            this.post();
         }
+        this.isCheck = !this.isCheck;
+    };
+    HomePage.prototype.startInspection = function () {
+        var _this = this;
+        this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(function (position) {
+            _this.getPositionSuccess(position.coords);
+        }, function (err) {
+            alert(err.message);
+        });
+    };
+    HomePage.prototype.post = function () {
+        var _this = this;
+        this.postId = setInterval(function () {
+            if (_this.truePts.length < 1) {
+                return;
+            }
+            var distance = 0;
+            if (_this.truePts.length == 1) {
+                distance = 0;
+            }
+            else {
+                distance = _this.trueDistance;
+            }
+            var pt = _this.truePts[_this.truePts.length - 1];
+            if (pt && !pt.isPost) {
+                var item = {
+                    X: pt.X,
+                    Y: pt.Y,
+                    Distance: distance,
+                    PDate: _this.getDateStr(),
+                    Remark: "3"
+                };
+                _this.sendPostion(item);
+                pt.isPost = true;
+            }
+        }, 10000);
     };
     HomePage.prototype.getDateStr = function () {
         var Dates = new Date();
@@ -614,29 +642,100 @@ var HomePage = (function () {
         var dateStr = year + '-' + month + '-' + day + " " + hour + ":" + minute + ":" + second;
         return dateStr;
     };
+    HomePage.prototype.getPositionSuccess = function (location) {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/geometry/Polyline", "esri/symbols/SimpleLineSymbol", "esri/graphic", "esri/Color"]).then(function (_a) {
+            var Point = _a[0], Polyline = _a[1], SimpleLineSymbol = _a[2], Graphic = _a[3], Color = _a[4];
+            var tempTime = (new Date()).getTime(); // position.timestamp; //
+            // i++;
+            // this.toastCtrl.create({ message: String(i), duration: 1500, position: "top" }).present();
+            if (!_this.isCheck) {
+                return;
+            }
+            if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
+                _this.stopInspection();
+                _this.backgroundGeolocation.stop();
+                _this.isCheck = false;
+                _this.imgSrc = "assets/imgs/startCheck.png";
+                _this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
+            }
+            if (location !== undefined) {
+                if (_this.lastX != _this.lastY) {
+                    var offX = Math.abs(_this.lastX - location.longitude);
+                    var offY = Math.abs(_this.lastY - location.latitude);
+                    if (offX < 0.0001 && offY < 0.0001) {
+                        //太近了 舍弃
+                        return;
+                    }
+                    var distance = _this.getDistance(_this.lastX, _this.lastY, location.longitude, location.latitude);
+                    var time = (tempTime - _this.lastDateTime);
+                    // this.toastCtrl.create({ message: String(distance), duration: 1500, position: "top" }).present();
+                    // this.toastCtrl.create({ message: String(time), duration: 1500, position: "middle" }).present();
+                    if (distance <= 5 * time / 1000 && time <= 13500) {
+                        //考虑到误差 速度以5m/s计算;
+                        //防止退屏和屏幕切换,获取两点间隔时间超过10s
+                        _this.truePts.push({ X: location.longitude, Y: location.latitude, isPost: false });
+                        if (_this.truePts.length > 2) {
+                            _this.truePts.splice(0, 1);
+                        }
+                        if (_this.truePts.length == 2) {
+                            var polyline = new Polyline([[_this.truePts[0].X, _this.truePts[0].Y], [_this.truePts[1].X, _this.truePts[1].Y]]);
+                            var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 3);
+                            var graphic = new Graphic(polyline, lineSymbol);
+                            var walkLayer = _this.map.getLayer("walkLayer");
+                            walkLayer.add(graphic);
+                            _this.trueDistance = _this.getDistance(_this.truePts[0].X, _this.truePts[0].Y, _this.truePts[1].X, _this.truePts[1].Y);
+                            var point = new Point(_this.truePts[1].X, _this.truePts[1].Y, _this.map.spatialReference);
+                            var postionLayer = _this.map.getLayer("postionLayer");
+                            var grap = postionLayer.graphics[0];
+                            grap.setGeometry(point);
+                            _this.map.centerAt(point);
+                        }
+                    }
+                }
+                //this.toastCtrl.create({ message: String(tempTime), duration: 500 }).present();
+                _this.lastDateTime = tempTime;
+                _this.lastX = location.longitude;
+                _this.lastY = location.latitude;
+            }
+        });
+    };
+    HomePage.prototype.getDistance = function (latA, lonA, latB, lonB) {
+        var earthR = 6371000.;
+        var x = Math.cos(latA * this.PI / 180.) * Math.cos(latB * this.PI / 180.) * Math.cos((lonA - lonB) * this.PI / 180);
+        var y = Math.sin(latA * this.PI / 180.) * Math.sin(latB * this.PI / 180.);
+        var s = x + y;
+        if (s > 1)
+            s = 1;
+        if (s < -1)
+            s = -1;
+        var alpha = Math.acos(s);
+        var distance = alpha * earthR;
+        return distance;
+    };
     HomePage.prototype.sendPostion = function (param) {
         var _this = this;
         this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostPosition", param, {}).subscribe(function (data) {
             if (data["Success"]) {
-                var toast = _this.toastCtrl.create({
-                    message: '坐标上传成功',
-                    duration: 3000,
-                    position: 'bottom'
-                });
-                toast.present();
+                // let toast = this.toastCtrl.create({
+                //   message: '坐标上传成功',
+                //   duration: 1000,
+                //   position: 'bottom'
+                // });
+                // toast.present();
             }
             else {
-                var toast = _this.toastCtrl.create({
-                    message: '坐标上传失败',
-                    duration: 3000,
-                    position: 'top'
-                });
-                toast.present();
+                // let toast = this.toastCtrl.create({
+                //   message: '坐标上传失败',
+                //   duration: 1000,
+                //   position: 'top'
+                // });
+                // toast.present();
             }
         }, function (err) {
             var toast = _this.toastCtrl.create({
-                message: err.message,
-                duration: 3000,
+                message: "连接服务器失败",
+                duration: 1500,
                 position: 'top'
             });
             toast.present();
@@ -687,7 +786,7 @@ var HomePage = (function () {
                 _this.position();
             });
         }).catch(function (err) {
-            console.error(err.message);
+            // console.error(err.message);
         });
     };
     HomePage = __decorate([
@@ -695,7 +794,7 @@ var HomePage = (function () {
             selector: 'page-home',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n      <button ion-button icon-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n      </button>\n    <ion-title>移动巡检</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="main" style="width: 100%;height: 100%;">\n        <div id="map" style="margin-bottom: 0px;z-index: 0;width: 100%;">\n          <div id="maptoolbar" class="maptoolbars" (click)="watchPosition()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="{{imgSrc}}" />\n            </a><b></b>\n          </div>\n          <div id="position" class="maptoolbars" style="right: 20px;bottom: 115px;left: auto;" (click)="position()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="assets/imgs/location.png" height="28" width="30" />\n            </a><b></b>\n          </div>\n  \n        </div>\n  \n      </div>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */]])
     ], HomePage);
     return HomePage;
 }());
@@ -704,18 +803,18 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 114:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -732,8 +831,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginPage = (function () {
-    function LoginPage(platform, formBuilder, navCtrl, navParams, toastCtrl, http, loadingCtrl, backButtonService) {
+    function LoginPage(platform, formBuilder, navCtrl, navParams, toastCtrl, http, loadingCtrl, backButtonService, app) {
         var _this = this;
         this.formBuilder = formBuilder;
         this.navCtrl = navCtrl;
@@ -742,9 +842,10 @@ var LoginPage = (function () {
         this.http = http;
         this.loadingCtrl = loadingCtrl;
         this.backButtonService = backButtonService;
+        this.app = app;
         this.loginForm = this.formBuilder.group({
-            'userName': ['', [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* Validators */].required]],
-            'password': ['', [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* Validators */].required]]
+            'userName': ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["h" /* Validators */].required]],
+            'password': ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["h" /* Validators */].required]]
             //'validCode':['', [Validators.required]]
         });
         platform.ready().then(function () {
@@ -769,17 +870,20 @@ var LoginPage = (function () {
             stc: this.randomString(4),
             validCode: user['validCode']
         };
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/User/Account/LogOnForApp", logUser, {}).subscribe(function (data) {
+        this.http.post(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* AppConfig */].appUrl + "/User/Account/LogOnForApp", logUser, {}).subscribe(function (data) {
             loading.dismiss();
             if (data["Success"]) {
                 window.localStorage.setItem('username', user["userName"]);
                 window.localStorage.setItem('userphoto', data["Data"]["Photo"]);
                 window.localStorage.setItem('usercommunity', data["Data"]["CommunityName"]);
                 window.localStorage.setItem('isLogin', 'login');
-                __WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].setBaseMapAddress(data["Data"]["BaseMapAddress"]);
+                window.localStorage.setItem('baseMapAddress', data["Data"]["BaseMapAddress"]);
+                window.localStorage.setItem('time', String((new Date()).getTime()));
+                __WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* AppConfig */].setBaseMapAddress(data["Data"]["BaseMapAddress"]);
                 setTimeout(function () {
                     // this.navCtrl.popTo();
-                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
+                    //this.navCtrl.push(TabsPage);
+                    _this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_6__tabs_tabs__["a" /* TabsPage */]);
                 }, 200);
             }
             else {
@@ -791,7 +895,6 @@ var LoginPage = (function () {
                 toast.present();
             }
         }, function (err) {
-            alert(JSON.stringify(err));
             loading.dismiss();
             var toast = _this.toastCtrl.create({
                 message: '连接服务器失败',
@@ -893,8 +996,8 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>登录</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<form [formGroup]="loginForm">\n    <ion-item style="text-align: center">\n      <img src="assets/imgs/userDefaultPic.png" width="127" height="147" alt="" />\n    </ion-item>\n    <ion-item>\n      <ion-label fixed>账号</ion-label>\n      <ion-input type="text" placeholder="请输入账号"  formControlName="userName"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label fixed>密码</ion-label>\n      <ion-input type="password" placeholder="请输入密码" formControlName="password"></ion-input>\n    </ion-item>\n    <div style="text-align: center; margin-top:30px">\n      <button ion-button block color="primary" (click)="logIn(loginForm.value,event)" [disabled]="!loginForm.valid">\n        登录\n      </button>\n    </div>\n  </form>\n  <!--   <form [formGroup]="loginForm">\n   <ion-grid>\n      <ion-row>\n        <ion-col>\n          <ion-row>\n            <ion-item style="text-align: center">\n              <img src="assets/imgs/userDefaultPic.png" width="127" height="147" alt="" />\n            </ion-item>\n            </ion-row>\n          <ion-row>\n            <ion-col col-3>\n              <ion-label fixed>账号</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-input type="text" placeholder="请输入账号" formControlName="userName"></ion-input>\n            </ion-col>\n\n          </ion-row>\n          <ion-row>\n            <ion-col col-3>\n              <ion-label fixed>密码</ion-label>\n            </ion-col>\n            <ion-col>\n              <ion-input type="password" placeholder="请输入密码" formControlName="password"></ion-input>\n            </ion-col>\n\n          </ion-row>\n         <!-- <ion-row>\n            <ion-col col-3>\n              <ion-label fixed>验证码</ion-label>\n            </ion-col>\n            <ion-col col-6>\n              <ion-input type="text" placeholder="请输入验证码" formControlName="validCode"></ion-input>\n            </ion-col>\n            <ion-col>\n              <img style="margin-top:8px" align="absmiddle" src="http://zhsq.cqmap.com/syl/User/Account/GetValidateCode" />\n            </ion-col>\n          </ion-row> \n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <div style="text-align: center; margin-top:30px">\n      <button ion-button block color="primary" (click)="logIn(loginForm.value,event)" [disabled]="!loginForm.valid">\n        登录\n      </button>\n    </div>\n  </form>-->\n</ion-content>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__providers_buttonback_service_buttonback_service__["a" /* BackButtonService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_buttonback_service_buttonback_service__["a" /* BackButtonService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
     ], LoginPage);
     return LoginPage;
 }());
@@ -903,7 +1006,7 @@ var LoginPage = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -911,7 +1014,7 @@ var LoginPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1009,7 +1112,7 @@ var MyEventPage = (function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1017,7 +1120,7 @@ var MyEventPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file__ = __webpack_require__(45);
@@ -1354,7 +1457,7 @@ var PresentEventPage = (function () {
 
 /***/ }),
 
-/***/ 117:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1399,7 +1502,7 @@ var PersonListPage = (function () {
 
 /***/ }),
 
-/***/ 118:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1444,7 +1547,7 @@ var RoomListPage = (function () {
 
 /***/ }),
 
-/***/ 131:
+/***/ 133:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -1457,11 +1560,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 131;
+webpackEmptyAsyncContext.id = 133;
 
 /***/ }),
 
-/***/ 15:
+/***/ 16:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1469,9 +1572,6 @@ webpackEmptyAsyncContext.id = 131;
 var AppConfig = (function () {
     function AppConfig() {
     }
-    /* public static appUrl(){
-         return "http://zhsq.cqmap.com/syl";
-     }*/
     AppConfig.getBaseMapAddress = function () {
         return this.baseMapAddress;
     };
@@ -1481,6 +1581,7 @@ var AppConfig = (function () {
     //public static appUrl:string="/app";  
     //public static appUrl: string = "http://192.168.1.105:61186";//"http://zhsq.cqmap.com/gxc";
     AppConfig.appUrl = "http://zhsq.cqmap.com/syl";
+    AppConfig.online = true;
     return AppConfig;
 }());
 
@@ -1488,56 +1589,56 @@ var AppConfig = (function () {
 
 /***/ }),
 
-/***/ 173:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/audio/audio.module": [
-		307,
+		309,
 		11
 	],
 	"../pages/car-list/car-list.module": [
-		306,
+		310,
 		10
 	],
 	"../pages/deal-event/deal-event.module": [
-		308,
+		311,
 		9
 	],
 	"../pages/detail-event/detail-event.module": [
-		309,
+		312,
 		8
 	],
 	"../pages/event-list/event-list.module": [
-		310,
+		313,
 		7
 	],
 	"../pages/home/home.module": [
-		311,
+		314,
 		6
 	],
 	"../pages/login/login.module": [
-		312,
+		315,
 		5
 	],
 	"../pages/my-event/my-event.module": [
-		313,
+		316,
 		4
 	],
 	"../pages/person-list/person-list.module": [
-		314,
+		317,
 		3
 	],
 	"../pages/picture/picture.module": [
-		315,
+		318,
 		2
 	],
 	"../pages/present-event/present-event.module": [
-		316,
+		319,
 		1
 	],
 	"../pages/room-list/room-list.module": [
-		317,
+		320,
 		0
 	]
 };
@@ -1552,82 +1653,12 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 173;
+webpackAsyncContext.id = 175;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 176:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_event__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var TabsPage = (function () {
-    function TabsPage(platform, backButtonService) {
-        var _this = this;
-        this.backButtonService = backButtonService;
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__event_event__["a" /* EventPage */];
-        this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
-        this.backButtonPressed = false;
-        platform.ready().then(function () {
-            _this.backButtonService.registerBackButtonAction(_this.tabRef);
-            // this.platform.registerBackButtonAction(() => {
-            //   if (this.backButtonPressed) {
-            //     this.platform.exitApp();
-            //   } else {
-            //     let toast = this.toastCtrl.create({
-            //       message: '再按一次退出应用',
-            //       position: "top",
-            //       duration: 2000
-            //     });
-            //     toast.present();
-            //     this.backButtonPressed = true;
-            //     setTimeout(() => {
-            //       this.backButtonPressed = false;
-            //     }, 2000)
-            //   }
-            // })
-        });
-    }
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('myTabs'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["n" /* Tabs */])
-    ], TabsPage.prototype, "tabRef", void 0);
-    TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\tabs\tabs.html"*/'<ion-tabs  #myTabs>\n  <ion-tab [root]="tab1Root" tabTitle="巡检" tabIcon="home" tabUrlPath="map"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="事件" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="入户走访" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\tabs\tabs.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__["a" /* BackButtonService */]])
-    ], TabsPage);
-    return TabsPage;
-}());
-
-//# sourceMappingURL=tabs.js.map
-
-/***/ }),
-
-/***/ 177:
+/***/ 179:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1636,9 +1667,9 @@ var TabsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_event_my_event__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event_list_event_list__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_event_my_event__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event_list_event_list__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1737,16 +1768,16 @@ var EventPage = (function () {
 
 /***/ }),
 
-/***/ 178:
+/***/ 180:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_list_room_list__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__car_list_car_list__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_list_room_list__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__car_list_car_list__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1789,7 +1820,7 @@ var ContactPage = (function () {
 
 /***/ }),
 
-/***/ 221:
+/***/ 223:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1797,9 +1828,9 @@ var ContactPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_opener__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_opener__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1901,13 +1932,13 @@ var AppUpdateService = (function () {
 
 /***/ }),
 
-/***/ 223:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(247);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1915,7 +1946,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 245:
+/***/ 247:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1923,39 +1954,41 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_event_event__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_event_event__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_file__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_media__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_event_my_event__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_car_list_car_list__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_deal_event_deal_event__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_room_list_room_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_media__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_event_my_event__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_car_list_car_list__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_deal_event_deal_event__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_room_list_room_list__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_audio_audio__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_event_list_event_list__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_event_list_event_list__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_detail_event_detail_event__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(304);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_app_version__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_file_opener__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_app_version__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_file_opener__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_appupdate_service_appupdate_service__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_picture_picture__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_appupdate_service_appupdate_service__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_picture_picture__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__ionic_native_network__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ionic_native_background_geolocation__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__app_config__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1998,6 +2031,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+//import { HTTP } from '@ionic-native/http';
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -2026,8 +2062,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/audio/audio.module#AudioPageModule', name: 'AudioPage', segment: 'audio', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detail-event/detail-event.module#DetailEventPageModule', name: 'detailevent', segment: 'detail:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/event-list/event-list.module#EventListPageModule', name: 'EventListPage', segment: 'event-list', priority: 'low', defaultHistory: [] },
@@ -2062,16 +2098,19 @@ var AppModule = (function () {
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_35__app_config__["a" /* AppConfig */],
+                __WEBPACK_IMPORTED_MODULE_37__app_config__["a" /* AppConfig */],
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__["a" /* Geolocation */],
                 __WEBPACK_IMPORTED_MODULE_16__ionic_native_file__["a" /* File */],
+                __WEBPACK_IMPORTED_MODULE_36__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */],
                 __WEBPACK_IMPORTED_MODULE_31__ionic_native_file_opener__["a" /* FileOpener */],
                 __WEBPACK_IMPORTED_MODULE_29__ionic_native_app_version__["a" /* AppVersion */],
                 __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__["a" /* AppUpdate */],
                 __WEBPACK_IMPORTED_MODULE_15__ionic_native_file_transfer__["a" /* FileTransfer */],
                 __WEBPACK_IMPORTED_MODULE_14__ionic_native_camera__["a" /* Camera */],
                 __WEBPACK_IMPORTED_MODULE_17__ionic_native_media__["a" /* Media */],
+                // HTTP,
+                __WEBPACK_IMPORTED_MODULE_35__ionic_native_network__["a" /* Network */],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__["a" /* DepartmentServiceProvider */],
                 __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__["a" /* UserServiceProvider */],
@@ -2088,20 +2127,22 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 301:
+/***/ 303:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_config__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_app_version__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_appupdate_service_appupdate_service__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_version__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_appupdate_service_appupdate_service__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_network__ = __webpack_require__(225);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2120,41 +2161,103 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, http, toastCtrl, appVersion, appupdateService) {
+    function MyApp(platform, statusBar, splashScreen, http, toastCtrl, appVersion, appupdateService, alertCtrl, network) {
         var _this = this;
         this.platform = platform;
         this.http = http;
         this.toastCtrl = toastCtrl;
         this.appVersion = appVersion;
         this.appupdateService = appupdateService;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
+        this.alertCtrl = alertCtrl;
+        this.network = network;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__["a" /* TabsPage */];
+        this.isIos = false;
+        if (!this.islogin()) {
+            this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
+        }
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
-            splashScreen.hide();
+            _this.addConnectEvent();
+            if (!platform.is("ios")) {
+                _this.isIos = false;
+            }
+            else if (platform.is("ios")) {
+                _this.isIos = true;
+            }
             _this.appVersion.getVersionNumber().then(function (value) {
                 _this.versionNum = value;
-                if (!platform.is("ios")) {
+                if (!_this.isIos) {
                     _this.appupdateService.checkUpdate(value);
+                    //this.isIos=false;
                 }
             });
+            splashScreen.hide();
         });
     }
+    MyApp.prototype.addConnectEvent = function () {
+        var _this = this;
+        this.disconnect = this.network.onDisconnect().subscribe(function () {
+            __WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* AppConfig */].online = false;
+            _this.toast = _this.toastCtrl.create({ message: "网络已断开", cssClass: "toast-danger", position: 'top' });
+            _this.toast.present();
+        });
+        this.connect = this.network.onConnect().subscribe(function () {
+            __WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* AppConfig */].online = true;
+            if (_this.toast) {
+                _this.toast.dismiss();
+                _this.toastCtrl.create({ message: "网络已连接", cssClass: "toast-balance", position: 'top', duration: 1500 }).present();
+            }
+        });
+    };
+    MyApp.prototype.islogin = function () {
+        var isLogin = window.localStorage.getItem("isLogin");
+        var time = window.localStorage.getItem("time");
+        var now = (new Date()).getTime();
+        var baseAddress = window.localStorage.getItem('baseMapAddress');
+        __WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* AppConfig */].setBaseMapAddress(baseAddress);
+        if (time) {
+            var timeNo = Number(time);
+            if ((now - timeNo) / (1000 * 60 * 60 * 24) < 7) {
+                if (isLogin && isLogin == "login") {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
     MyApp.prototype.logOff = function () {
         var _this = this;
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_config__["a" /* AppConfig */].appUrl + "/User/Account/LogOffForApp", {}, {}).subscribe(function (res) {
-            _this.toastCtrl.create({ message: "退出成功", duration: 1000 }).present();
-            _this.platform.exitApp();
-        }, function (err) {
-            var toast = _this.toastCtrl.create({
-                message: '连接服务器失败',
-                duration: 3000,
-                position: 'top'
-            });
-            toast.present();
-        });
+        this.alertCtrl.create({
+            title: '提示',
+            message: '是否确认退出?',
+            buttons: [
+                {
+                    text: '取消',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: '确定',
+                    handler: function () {
+                        _this.http.post(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* AppConfig */].appUrl + "/User/Account/LogOffForApp", {}, {}).subscribe(function (res) {
+                            window.localStorage.clear();
+                            _this.toastCtrl.create({ message: "退出成功", duration: 1000 }).present();
+                            _this.platform.exitApp();
+                        }, function (err) {
+                            _this.toastCtrl.create({ message: '连接服务器失败', duration: 3000, position: 'top' }).present();
+                            ;
+                        });
+                    }
+                }
+            ]
+        }).present();
     };
     MyApp.prototype.menuOpen = function () {
         this.userName = window.localStorage.getItem("username");
@@ -2162,10 +2265,10 @@ var MyApp = (function () {
         this.userCommunity = window.localStorage.getItem("usercommunity");
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\app\app.html"*/'<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="content" id="menu1" (ionOpen)="menuOpen()">\n\n    <!-- <ion-header>\n        <ion-toolbar>\n            <ion-title></ion-title>\n        </ion-toolbar>\n    </ion-header> -->\n\n    <ion-content padding>\n        <!-- <ion-list>\n            <button ion-item menuClose="menu1" detail-none>\n                Close Menu 1\n            </button>\n        </ion-list> -->\n        <div class="mui-content" style="margin-top:50px">\n            <div class="title"></div>\n            <div class="content">\n                <div align="center">\n                    <img id="userImg" [src]="userPhoto||\'assets/imgs/ic_launcher.png\'" style="width:100px; height:100px; border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;"/>\n                    <div id="userName">{{userName}}({{userCommunity}})</div>\n                </div>\n\n                <p style="margin: 10px 15px;">\n                    <!--<button id="close-btn" type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 20px;">关闭侧滑菜单</button>-->\n                </p>\n\n            </div>\n            <!--//mui-table-view-chevron mui-table-view-inverted-->\n            <ion-list>\n                <button ion-item >事件统计</button>\n                <button ion-item >人口统计</button>\n            </ion-list>\n        </div>\n        <div class="mui-content-padded" style="height: 150px;">\n            <!-- <div class="mui-btn mui-btn-block mui-btn-red" id="logoff">安全退出</div> -->\n            <button ion-button full color="danger" (click)="logOff()">安全退出</button>\n        </div>\n        <div class="mui-content-padded" align="center">\n            <div id="versionNum" style="bottom: 20px;color: #ccc;">{{versionNum}}</div>\n        </div>\n    </ion-content>\n\n</ion-menu>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\app\app.html"*/'<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="content" id="menu1" (ionOpen)="menuOpen()">\n\n    <!-- <ion-header>\n        <ion-toolbar>\n            <ion-title></ion-title>\n        </ion-toolbar>\n    </ion-header> -->\n\n    <ion-content padding>\n        <!-- <ion-list>\n            <button ion-item menuClose="menu1" detail-none>\n                Close Menu 1\n            </button>\n        </ion-list> -->\n        <div class="mui-content" style="margin-top:50px">\n            <div class="title"></div>\n            <div class="content">\n                <div align="center">\n                    <img id="userImg" [src]="userPhoto||\'assets/imgs/ic_launcher.png\'" style="width:100px; height:100px; border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;"/>\n                    <div id="userName">{{userName}}({{userCommunity}})</div>\n                </div>\n\n                <p style="margin: 10px 15px;">\n                    <!--<button id="close-btn" type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 20px;">关闭侧滑菜单</button>-->\n                </p>\n\n            </div>\n            <!--//mui-table-view-chevron mui-table-view-inverted-->\n            <ion-list>\n                <button ion-item >事件统计</button>\n                <button ion-item >人口统计</button>\n            </ion-list>\n        </div>\n        <div class="mui-content-padded" style="height: 150px;"  *ngIf="!isIos">\n            <!-- <div class="mui-btn mui-btn-block mui-btn-red" id="logoff">安全退出</div> -->\n            <button ion-button full color="danger" (click)="logOff()">安全退出</button>\n        </div>\n        <div class="mui-content-padded" align="center">\n            <div id="versionNum" style="bottom: 20px;color: #ccc;">{{versionNum}}</div>\n        </div>\n    </ion-content>\n\n</ion-menu>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_7__ionic_native_app_version__["a" /* AppVersion */], __WEBPACK_IMPORTED_MODULE_8__providers_appupdate_service_appupdate_service__["a" /* AppUpdateService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_version__["a" /* AppVersion */], __WEBPACK_IMPORTED_MODULE_9__providers_appupdate_service_appupdate_service__["a" /* AppUpdateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_network__["a" /* Network */]])
     ], MyApp);
     return MyApp;
 }());
@@ -2174,7 +2277,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 302:
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2223,7 +2326,7 @@ var DepartmentServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 303:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2263,14 +2366,14 @@ var UserServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 304:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_config__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_config__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2313,7 +2416,7 @@ var HttpServiceProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudioPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_media__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_media__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_file__ = __webpack_require__(45);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2483,10 +2586,10 @@ var AudioPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deal_event_deal_event__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deal_event_deal_event__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__audio_audio__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__picture_picture__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__picture_picture__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2545,8 +2648,9 @@ var DetailEventPage = (function () {
         model.present();
     };
     DetailEventPage.prototype.showImg = function (urls) {
-        var model = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__picture_picture__["a" /* PicturePage */], { urlNames: urls });
-        model.present();
+        // let model = this.modalCtrl.create(PicturePage, { urlNames: urls });
+        // model.present();
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__picture_picture__["a" /* PicturePage */], { urlNames: urls });
     };
     DetailEventPage.prototype.assembleHTML = function (eventResult) {
         var html = '[' + eventResult.Type + ']' + eventResult.Remark;
@@ -2584,6 +2688,7 @@ var DetailEventPage = (function () {
                 }
                 toast.present();
                 //this.navCtrl.pop();
+                _this.event["Type"] = "处理中";
                 _this.navCtrl.push(DetailEventPage_1, { event: _this.event });
             }, function (err) {
                 var toast = _this.toastCtrl.create({
@@ -2718,7 +2823,77 @@ var BackButtonService = (function () {
 
 //# sourceMappingURL=buttonback-service.js.map
 
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_event__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var TabsPage = (function () {
+    function TabsPage(platform, backButtonService) {
+        var _this = this;
+        this.backButtonService = backButtonService;
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__event_event__["a" /* EventPage */];
+        this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
+        this.backButtonPressed = false;
+        platform.ready().then(function () {
+            _this.backButtonService.registerBackButtonAction(_this.tabRef);
+            // this.platform.registerBackButtonAction(() => {
+            //   if (this.backButtonPressed) {
+            //     this.platform.exitApp();
+            //   } else {
+            //     let toast = this.toastCtrl.create({
+            //       message: '再按一次退出应用',
+            //       position: "top",
+            //       duration: 2000
+            //     });
+            //     toast.present();
+            //     this.backButtonPressed = true;
+            //     setTimeout(() => {
+            //       this.backButtonPressed = false;
+            //     }, 2000)
+            //   }
+            // })
+        });
+    }
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('myTabs'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["n" /* Tabs */])
+    ], TabsPage.prototype, "tabRef", void 0);
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\tabs\tabs.html"*/'<ion-tabs  #myTabs>\n  <ion-tab [root]="tab1Root" tabTitle="巡检" tabIcon="home" tabUrlPath="map"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="事件" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="入户走访" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\tabs\tabs.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__["a" /* BackButtonService */]])
+    ], TabsPage);
+    return TabsPage;
+}());
+
+//# sourceMappingURL=tabs.js.map
+
 /***/ })
 
-},[223]);
+},[226]);
 //# sourceMappingURL=main.js.map

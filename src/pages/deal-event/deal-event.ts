@@ -200,6 +200,7 @@ export class DealEventPage {
       toast.present();
       setTimeout(() => {
         this.navCtrl.pop();
+        //this.navCtrl.popTo("DetailEventPage");
       }, 1000); //刷新
     }, err => {
 

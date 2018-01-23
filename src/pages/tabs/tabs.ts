@@ -16,9 +16,9 @@ export class TabsPage {
   public backButtonPressed: boolean = false;
   constructor(platform: Platform, private backButtonService: BackButtonService) {
     platform.ready().then(() => {
-
+        
       this.backButtonService.registerBackButtonAction(this.tabRef);
-
+      
       // this.platform.registerBackButtonAction(() => {
       //   if (this.backButtonPressed) {
       //     this.platform.exitApp();
@@ -37,6 +37,7 @@ export class TabsPage {
       // })
     })
   }
+  
   // ionViewWillEnter(){
   //  let isLogin= window.localStorage.getItem("isLogin");
   //  if(!isLogin&&isLogin!="login"){

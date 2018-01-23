@@ -51,8 +51,9 @@ export class DetailEventPage {
     model.present();
   }
   public showImg(urls) {
-    let model = this.modalCtrl.create(PicturePage, { urlNames: urls });
-    model.present();
+    // let model = this.modalCtrl.create(PicturePage, { urlNames: urls });
+    // model.present();
+   this.navCtrl.push(PicturePage, { urlNames: urls });
   }
   public assembleHTML(eventResult: any) {
     let html = '[' + eventResult.Type + ']' + eventResult.Remark;
@@ -62,6 +63,7 @@ export class DetailEventPage {
    * dealWith(eventResult)
    */
   public dealWith() {
+
     if (this.event["Type"] === '上报' || this.event["Type"] === '待接手' || this.event["Type"] === '驳回') {
       let loading = this.loadCtrl.create({
         spinner: 'ios',
@@ -89,6 +91,7 @@ export class DetailEventPage {
         }
         toast.present();
         //this.navCtrl.pop();
+        this.event["Type"] ="处理中";
         this.navCtrl.push(DetailEventPage, { event: this.event });
       }, err => {
         let toast = this.toastCtrl.create({

@@ -25680,6 +25680,18 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.toast-danger .toast-wrapper {
+  background: #ff0000;
+}
+
+.toast-balance .toast-wrapper {
+  background-color: #33cd5f;
+}
+
+.toast-positive .toast-wrapper {
+  background-color: #0c60ee;
+}
+
 page-audio .rp {
   width: 100%;
   height: 100%;

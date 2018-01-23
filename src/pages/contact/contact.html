@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>
+      入户走访
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item (click)="goto('people')">
+        <button ion-button block color="light" large>
+            <ion-icon  ios="ios-people" md="md-people"></ion-icon>
+            居民信息
+          </button>
+    </ion-item>
+    <ion-item (click)="goto('room')">
+        <button ion-button block color="light" large>
+            <ion-icon ios="ios-home" md="md-home"></ion-icon>
+            房屋信息
+          </button>
+    </ion-item>
+    <ion-item (click)="goto('car')">
+        <button ion-button block color="light" large>
+            <ion-icon  ios="ios-car" md="md-car"></ion-icon>
+            车辆管理
+          </button>
+    </ion-item>
+</ion-content>

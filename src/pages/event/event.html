@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>
+      事件
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <!-- <button ion-button large (click)="clickme($event)">
+   点我
+  </button>
+  <button ion-button large (click)="getPicture($event)">
+      照相机
+  </button>-->
+  <ion-item (click)="goto('presentEvent')">
+      <button ion-button block color="light" large>
+          <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+          事件上报
+        </button>
+  </ion-item>
+  <ion-item (click)="goto('myEvent')">
+      <button ion-button block color="light" large>
+          <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+          我的事件
+        </button>
+  </ion-item>
+  <ion-item (click)="goto('dealEvent')">
+      <button ion-button block color="light" large>
+          <ion-icon name="create"></ion-icon>
+          事件处理
+        </button>
+  </ion-item>
+  <img>
+</ion-content>

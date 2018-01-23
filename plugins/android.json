@@ -1,0 +1,58 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.synconset.imagepicker": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-app-update": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-file-opener2": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    }
+  }
+}

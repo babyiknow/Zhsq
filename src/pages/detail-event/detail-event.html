@@ -1,0 +1,51 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>事件详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="item item-block item-md" style="padding-left:0px">
+    <label class="item-inner">上报信息：{{event.Info}}</label>
+  </div>
+  <div class="item item-block item-md" style="padding-left:0px">
+    <label class="item-inner">当前进度：{{event.Type}}</label>
+  </div>
+  <div class="item item-block item-md" style="padding-left:0px">
+    <label class="item-inner">事件类型：{{event.EventItemTypeName}}</label>
+  </div>
+  <div class="item item-block item-md" style="padding-left:0px">
+    <label class="item-inner">事件地址：{{event.Address}}</label>
+  </div>
+
+  <div class="item item-block item-md" style="background:#f4f4f4;padding-left:0px">
+    <div id="cd-timeline" class="cd-container">
+      <div class="cd-timeline-block" *ngFor="let eventResult of eventResultList;let i = index">
+        <div class="cd-timeline-img cd-picture" [ngStyle]="{'background-color':i==0?'#75ce66':'#CCCCCC'}"></div>
+        <div class="cd-timeline-content">
+          <!-- <h5 style="font-size:15px">{{'['+eventResult.Type +']'+eventResult.Remark}}</h5> -->
+          <h5 style="font-size:15px" [innerHTML]="assembleHTML(eventResult)"></h5>
+          <p style="font-size:15px">{{eventResult.Detail}}</p>
+
+          <div class="image-list" *ngIf="eventResult.UrlNames&&eventResult.UrlNames!=''">
+            <div class="image-item" *ngFor="let url of eventResult.UrlNames.split(',')">
+              <img [src]="appUrl+'/Admin/Affairs/WorkFiles/Get/'+url.split('/').join('|')" *ngIf="url.indexOf('.mp3')<0" (click)="showImg(eventResult.UrlNames)">
+              <img [src]="'assets/imgs/voice.jpg'" *ngIf="url.indexOf('.mp3')>-1" (click)="playAudio(appUrl+'/User/Affairs/WorkFiles/Get/'+url.split('/').join('|'))">
+            </div>
+          </div>
+          <a id="cd-read-more" class="disable-hover button button-md button-default button-default-md button-small button-small-md"
+            (click)="dealWith(eventResult)" style="float:right;line-height: 2.1em" *ngIf=" i==0&&(eventResult.Type != '提交审核' && eventResult.Type != '审核通过')">{{(eventResult["Type"] === '上报' ||eventResult["Type"] === '待接手' ||eventResult["Type"]=== '驳回')?"领取":"处理"}}</a>
+          <span style="font-size:15px" class="cd-date">{{eventResult.Date}}</span>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>

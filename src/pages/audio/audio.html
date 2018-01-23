@@ -1,0 +1,29 @@
+<!--
+  Generated template for the AudioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <div id="play" class="rp" *ngIf="!isRecord">
+    <!-- <div id="ptime" class="ptime">{{ptimeText}}</div> -->
+    <div id="ptime" class="ptime">{{ptimeText}}</div> 
+    <br/>
+    <div id="progress" class="progress">
+      <!-- <div id="schedule" class="schedule" [ngStyle]="{'width':'80px'}"></div> -->
+      <audio src="{{filePath}}" preload="meta" controls autoplay *ngIf="showStop"></audio>
+    </div>
+    <br/>
+     <div class="stop" (click)="playStop()" ></div>
+  </div>
+  <div id="record" class="rp" *ngIf="isRecord">
+    <div style="width:100%;height:20%;"></div>
+    <div class="rprogress">
+      <div class="rschedule"></div>
+    </div>
+    <br/>
+    <div #rtime class="rtime">{{rtimeText}}</div>
+    <br/>
+    <div class="stop" (click)="stopRecord()"></div>
+  </div>
+</ion-content>

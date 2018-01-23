@@ -1,0 +1,45 @@
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-menu [content]="content" id="menu1" (ionOpen)="menuOpen()">
+
+    <!-- <ion-header>
+        <ion-toolbar>
+            <ion-title></ion-title>
+        </ion-toolbar>
+    </ion-header> -->
+
+    <ion-content padding>
+        <!-- <ion-list>
+            <button ion-item menuClose="menu1" detail-none>
+                Close Menu 1
+            </button>
+        </ion-list> -->
+        <div class="mui-content" style="margin-top:50px">
+            <div class="title"></div>
+            <div class="content">
+                <div align="center">
+                    <img id="userImg" [src]="userPhoto||'assets/imgs/ic_launcher.png'" style="width:100px; height:100px; border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;"/>
+                    <div id="userName">{{userName}}({{userCommunity}})</div>
+                </div>
+
+                <p style="margin: 10px 15px;">
+                    <!--<button id="close-btn" type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 20px;">关闭侧滑菜单</button>-->
+                </p>
+
+            </div>
+            <!--//mui-table-view-chevron mui-table-view-inverted-->
+            <ion-list>
+                <button ion-item >事件统计</button>
+                <button ion-item >人口统计</button>
+            </ion-list>
+        </div>
+        <div class="mui-content-padded" style="height: 150px;">
+            <!-- <div class="mui-btn mui-btn-block mui-btn-red" id="logoff">安全退出</div> -->
+            <button ion-button full color="danger" (click)="logOff()">安全退出</button>
+        </div>
+        <div class="mui-content-padded" align="center">
+            <div id="versionNum" style="bottom: 20px;color: #ccc;">{{versionNum}}</div>
+        </div>
+    </ion-content>
+
+</ion-menu>

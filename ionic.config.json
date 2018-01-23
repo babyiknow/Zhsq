@@ -1,0 +1,15 @@
+{
+  "name": "石油路",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/app",
+     
+      "proxyUrl":"http://zhsq.cqmap.com/syl"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ export class AppUpdateService {
         this.http.post(AppConfig.appUrl + "/Dcqtech.App/App/CheckUpdate", {}, {}).subscribe((res: any) => {
             //读取新版本号
             let newVer: string = res.Response.VersionNum;
-            newVer = newVer.split(',').join("");
+            newVer = newVer.split('.').join("");        
             if (oldVersion && newVer && (parseInt(newVer) > parseInt(oldVersion))) {
                 console.log("最新版本2:" + newVer);
                 this.alertCtrl.create({
@@ -33,7 +33,7 @@ export class AppUpdateService {
                             text: '更新',
                             handler: () => {
                                 console.log('更新');
-                                alert(res.Response.Url);
+                                //alert(res.Response.Url);
                                 this.loadAPP(res.Response.Url);
                             }
                         }

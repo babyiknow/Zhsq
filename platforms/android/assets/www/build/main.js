@@ -1863,7 +1863,7 @@ var AppUpdateService = (function () {
         this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.App/App/CheckUpdate", {}, {}).subscribe(function (res) {
             //读取新版本号
             var newVer = res.Response.VersionNum;
-            newVer = newVer.split(',').join("");
+            newVer = newVer.split('.').join("");
             if (oldVersion && newVer && (parseInt(newVer) > parseInt(oldVersion))) {
                 console.log("最新版本2:" + newVer);
                 _this.alertCtrl.create({
@@ -1881,7 +1881,7 @@ var AppUpdateService = (function () {
                             text: '更新',
                             handler: function () {
                                 console.log('更新');
-                                alert(res.Response.Url);
+                                //alert(res.Response.Url);
                                 _this.loadAPP(res.Response.Url);
                             }
                         }
@@ -1889,7 +1889,6 @@ var AppUpdateService = (function () {
                 }).present();
             }
             else {
-                alert("失败");
             }
         });
     };
@@ -2193,7 +2192,7 @@ var MyApp = (function () {
             _this.appVersion.getVersionNumber().then(function (value) {
                 _this.versionNum = value;
                 if (!_this.isIos) {
-                    _this.appupdateService.checkUpdate(value.split(',').join(""));
+                    _this.appupdateService.checkUpdate(value.split('.').join(""));
                     //this.isIos=false;
                 }
             });

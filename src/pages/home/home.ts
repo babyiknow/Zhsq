@@ -207,10 +207,14 @@ export class HomePage {
         if (this.lastX != this.lastY) {
           let offX = Math.abs(this.lastX - location.longitude);
           let offY = Math.abs(this.lastY - location.latitude);
-          if (offX < 0.0001 && offY < 0.0001) {
-            //太近了 舍弃
+          
+          if(offX ==0&& offY==0){
             return;
           }
+          // if (offX < 0.0001 && offY < 0.0001) {
+          //   //太近了 舍弃
+          //   return;
+          // }
           let distance = this.getDistance(this.lastX, this.lastY, location.longitude, location.latitude);
           let time: number = (tempTime - this.lastDateTime);
           // this.toastCtrl.create({ message: String(distance), duration: 1500, position: "top" }).present();

@@ -9,7 +9,7 @@
     {
       "path": "/app",
      
-      "proxyUrl":"http://zhsq.cqmap.com/syl"
+      "proxyUrl":"http://192.168.1.105:61186"
     }
   ]
 }

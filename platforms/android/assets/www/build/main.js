@@ -587,6 +587,8 @@ var HomePage = (function () {
             this.backgroundGeolocation.stop();
             clearInterval(this.postId);
             this.postId = null;
+            clearInterval(this.postHeartId);
+            this.postHeartId = null;
         }
         else {
             this.imgSrc = "assets/imgs/endCheck.gif";
@@ -606,6 +608,9 @@ var HomePage = (function () {
     };
     HomePage.prototype.post = function () {
         var _this = this;
+        this.postHeartId = setInterval(function () {
+            _this.postHeart(false);
+        }, 20000);
         this.postId = setInterval(function () {
             if (_this.truePts.length < 1) {
                 return;
@@ -630,6 +635,10 @@ var HomePage = (function () {
                 pt.isPost = true;
             }
         }, 10000);
+    };
+    HomePage.prototype.postHeart = function (Remove) {
+        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", Remove, {}).subscribe(function (data) {
+        });
     };
     HomePage.prototype.getDateStr = function () {
         var Dates = new Date();
@@ -1582,8 +1591,8 @@ var AppConfig = (function () {
         this.baseMapAddress = url;
     };
     //public static appUrl:string="/app";  
-    //public static appUrl: string = "http://192.168.1.105:61186";//"http://zhsq.cqmap.com/gxc";
-    AppConfig.appUrl = "http://zhsq.cqmap.com/syl";
+    AppConfig.appUrl = "http://192.168.1.105:61186"; //"http://zhsq.cqmap.com/gxc";
+    //public static appUrl: string = "http://zhsq.cqmap.com/syl";
     AppConfig.online = true;
     return AppConfig;
 }());
@@ -1605,15 +1614,15 @@ var map = {
 		10
 	],
 	"../pages/deal-event/deal-event.module": [
-		311,
+		313,
 		9
 	],
 	"../pages/detail-event/detail-event.module": [
-		312,
+		311,
 		8
 	],
 	"../pages/event-list/event-list.module": [
-		313,
+		312,
 		7
 	],
 	"../pages/home/home.module": [
@@ -2067,9 +2076,9 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/audio/audio.module#AudioPageModule', name: 'AudioPage', segment: 'audio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detail-event/detail-event.module#DetailEventPageModule', name: 'detailevent', segment: 'detail:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/event-list/event-list.module#EventListPageModule', name: 'EventListPage', segment: 'event-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-event/my-event.module#MyEventPageModule', name: 'myevent', segment: 'myevent', priority: 'low', defaultHistory: [] },

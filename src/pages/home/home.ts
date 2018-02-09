@@ -23,6 +23,7 @@ export class HomePage {
   truePt: any;
   truePts: any;
   postId;
+  postHeartId;
   PI;
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public platform: Platform, public geolocation: Geolocation,
     private http: HttpClient, private backgroundGeolocation: BackgroundGeolocation) {
@@ -132,7 +133,8 @@ export class HomePage {
       this.backgroundGeolocation.stop();
       clearInterval(this.postId);
       this.postId = null;
-
+      clearInterval(this.postHeartId);
+      this.postHeartId=null;
 
     }
     else {
@@ -151,7 +153,10 @@ export class HomePage {
     });
   }
   private post() {
-    this.postId = setInterval(() => {
+    this.postHeartId=setInterval(()=>{
+      this.postHeart(false);
+    },20000);
+    this.postId = setInterval(() => {    
       if (this.truePts.length < 1) {
         return;
       }
@@ -175,6 +180,13 @@ export class HomePage {
         pt.isPost = true;
       }
     }, 10000);
+  }
+  private postHeart(Remove:boolean){
+    this.http.post(AppConfig.appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart",{Remove:Remove}, {}).subscribe((data: Response) => {
+      
+    },err=>{
+      debugger;
+    });
   }
   private getDateStr() {
     const Dates = new Date();

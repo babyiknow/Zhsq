@@ -23,6 +23,7 @@
     "@ionic-native/app-update": "^4.5.2",
     "@ionic-native/app-version": "^4.5.2",
     "@ionic-native/background-geolocation": "^4.5.2",
+    "@ionic-native/background-mode": "^4.5.3",
     "@ionic-native/camera": "^4.5.2",
     "@ionic-native/core": "^4.4.0",
     "@ionic-native/file": "^4.5.2",
@@ -84,7 +85,6 @@
       "cordova-plugin-file-opener2": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-advanced-http": {},
-      "cordova-plugin-background-mode": {},
       "cordova-plugin-mauron85-background-geolocation": {
         "GOOGLE_PLAY_SERVICES_VERSION": "+",
         "ICON": "@mipmap/icon",
@@ -93,7 +93,8 @@
         "ACCOUNT_LABEL": "@string/app_name",
         "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
         "CONTENT_AUTHORITY": "$PACKAGE_NAME"
-      }
+      },
+      "cordova-plugin-background-mode": {}
     },
     "platforms": [
       "android"

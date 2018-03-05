@@ -29,11 +29,11 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+              "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
               "count": 1
             },
             {
@@ -46,6 +46,10 @@
             },
             {
               "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"BackgroundGeolocation\"><param name=\"android-package\" value=\"com.tenforwardconsulting.cordova.BackgroundGeolocationPlugin\" /></feature>",
               "count": 1
             },
             {
@@ -78,10 +82,6 @@
             },
             {
               "xml": "<preference name=\"AndroidLaunchMode\" value=\"singleInstance\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"BackgroundGeolocation\"><param name=\"android-package\" value=\"com.tenforwardconsulting.cordova.BackgroundGeolocationPlugin\" /></feature>",
               "count": 1
             }
           ]
@@ -199,10 +199,6 @@
               "count": 1
             },
             {
-              "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
-              "count": 1
-            },
-            {
               "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
               "count": 1
             },
@@ -224,6 +220,10 @@
             },
             {
               "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"com.marianhello.bgloc.BootCompletedReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
+              "count": 1
+            },
+            {
+              "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
               "count": 1
             }
           ],
@@ -321,10 +321,10 @@
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
-    "cordova-plugin-camera": {
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
-    "cordova-plugin-device": {
+    "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
     "cordova-plugin-file-opener2": {
@@ -337,6 +337,16 @@
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
     "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-mauron85-background-geolocation": {
+      "GOOGLE_PLAY_SERVICES_VERSION": "+",
+      "ICON": "@mipmap/icon",
+      "SMALL_ICON": "@mipmap/icon",
+      "ACCOUNT_NAME": "@string/app_name",
+      "ACCOUNT_LABEL": "@string/app_name",
+      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
     "cordova-plugin-media": {
@@ -355,16 +365,6 @@
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
     "cordova-plugin-background-mode": {
-      "PACKAGE_NAME": "com.dcqtech.zhsyl"
-    },
-    "cordova-plugin-mauron85-background-geolocation": {
-      "GOOGLE_PLAY_SERVICES_VERSION": "+",
-      "ICON": "@mipmap/icon",
-      "SMALL_ICON": "@mipmap/icon",
-      "ACCOUNT_NAME": "@string/app_name",
-      "ACCOUNT_LABEL": "@string/app_name",
-      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     }
   },
@@ -601,6 +601,14 @@
       ]
     },
     {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
       "pluginId": "cordova-plugin-camera",
@@ -630,14 +638,6 @@
       "pluginId": "cordova-plugin-camera",
       "clobbers": [
         "CameraPopoverHandle"
-      ]
-    },
-    {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
       ]
     },
     {
@@ -677,6 +677,14 @@
       "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
       "pluginId": "cordova-plugin-geolocation",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
+      "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
+      "pluginId": "cordova-plugin-mauron85-background-geolocation",
+      "clobbers": [
+        "backgroundGeolocation"
+      ]
     },
     {
       "id": "cordova-plugin-media.MediaError",
@@ -736,14 +744,6 @@
         "cordova.plugins.backgroundMode",
         "plugin.backgroundMode"
       ]
-    },
-    {
-      "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
-      "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
-      "pluginId": "cordova-plugin-mauron85-background-geolocation",
-      "clobbers": [
-        "backgroundGeolocation"
-      ]
     }
   ],
   "plugin_metadata": {
@@ -752,18 +752,18 @@
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-app-update": "1.4.14",
     "cordova-plugin-app-version": "0.1.9",
-    "cordova-plugin-camera": "3.0.0",
     "cordova-plugin-device": "1.1.7",
+    "cordova-plugin-camera": "3.0.0",
     "cordova-plugin-file-opener2": "2.0.19",
     "cordova-plugin-file-transfer": "1.7.0",
     "cordova-plugin-geolocation": "3.0.0",
     "cordova-plugin-ionic-webview": "1.1.16",
+    "cordova-plugin-mauron85-background-geolocation": "2.3.3",
     "cordova-plugin-media": "4.0.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-splashscreen": "4.0.3",
     "cordova-plugin-whitelist": "1.3.1",
     "ionic-plugin-keyboard": "2.2.1",
-    "cordova-plugin-background-mode": "0.7.2",
-    "cordova-plugin-mauron85-background-geolocation": "2.3.3"
+    "cordova-plugin-background-mode": "0.7.2"
   }
 }

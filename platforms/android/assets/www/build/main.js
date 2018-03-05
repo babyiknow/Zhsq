@@ -52,7 +52,7 @@ var CarListPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DealEventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(51);
@@ -456,6 +456,7 @@ var EventListPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_background_mode__ = __webpack_require__(286);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -473,8 +474,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http, backgroundGeolocation) {
+    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http, backgroundGeolocation, backgroundMode) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.toastCtrl = toastCtrl;
@@ -483,6 +485,7 @@ var HomePage = (function () {
         this.geolocation = geolocation;
         this.http = http;
         this.backgroundGeolocation = backgroundGeolocation;
+        this.backgroundMode = backgroundMode;
         platform.ready().then(function () {
             _this.PI = 3.14159265358979324;
             _this.imgSrc = "assets/imgs/startCheck.png";
@@ -519,6 +522,7 @@ var HomePage = (function () {
     HomePage.prototype.configureBackgroundGeoLocation = function () {
         var _this = this;
         var config = {
+            locationProvider: 1,
             desiredAccuracy: 0,
             stationaryRadius: 10,
             distanceFilter: 2,
@@ -528,7 +532,7 @@ var HomePage = (function () {
             notificationText: '巡检中',
             activityType: 'AutomotiveNavigation',
             //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-            stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+            stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
         };
         this.backgroundGeolocation.configure(config)
             .subscribe(function (location) {
@@ -637,7 +641,9 @@ var HomePage = (function () {
         }, 10000);
     };
     HomePage.prototype.postHeart = function (Remove) {
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", Remove, {}).subscribe(function (data) {
+        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", { Remove: Remove }, {}).subscribe(function (data) {
+        }, function (err) {
+            debugger;
         });
     };
     HomePage.prototype.getDateStr = function () {
@@ -805,8 +811,14 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n      <button ion-button icon-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n      </button>\n    <ion-title>移动巡检</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="main" style="width: 100%;height: 100%;">\n        <div id="map" style="margin-bottom: 0px;z-index: 0;width: 100%;">\n          <div id="maptoolbar" class="maptoolbars" (click)="watchPosition()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="{{imgSrc}}" />\n            </a><b></b>\n          </div>\n          <div id="position" class="maptoolbars" style="right: 20px;bottom: 115px;left: auto;" (click)="position()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="assets/imgs/location.png" height="28" width="30" />\n            </a><b></b>\n          </div>\n  \n        </div>\n  \n      </div>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_background_mode__["a" /* BackgroundMode */]])
     ], HomePage);
     return HomePage;
 }());
@@ -823,7 +835,7 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(88);
@@ -1591,8 +1603,9 @@ var AppConfig = (function () {
         this.baseMapAddress = url;
     };
     //public static appUrl:string="/app";  
-    AppConfig.appUrl = "http://192.168.1.105:61186"; //"http://zhsq.cqmap.com/gxc";
+    //public static appUrl: string = "http://192.168.1.105:61186";//"http://zhsq.cqmap.com/gxc";
     //public static appUrl: string = "http://zhsq.cqmap.com/syl";
+    AppConfig.appUrl = "http://zhsq.cqmap.com/sq_test";
     AppConfig.online = true;
     return AppConfig;
 }());
@@ -1606,51 +1619,51 @@ var AppConfig = (function () {
 
 var map = {
 	"../pages/audio/audio.module": [
-		309,
+		310,
 		11
 	],
 	"../pages/car-list/car-list.module": [
-		310,
+		311,
 		10
 	],
 	"../pages/deal-event/deal-event.module": [
-		313,
+		312,
 		9
 	],
 	"../pages/detail-event/detail-event.module": [
-		311,
+		313,
 		8
 	],
 	"../pages/event-list/event-list.module": [
-		312,
+		314,
 		7
 	],
 	"../pages/home/home.module": [
-		314,
+		315,
 		6
 	],
 	"../pages/login/login.module": [
-		315,
+		316,
 		5
 	],
 	"../pages/my-event/my-event.module": [
-		316,
+		317,
 		4
 	],
 	"../pages/person-list/person-list.module": [
-		317,
+		318,
 		3
 	],
 	"../pages/picture/picture.module": [
-		318,
+		319,
 		2
 	],
 	"../pages/present-event/present-event.module": [
-		319,
+		320,
 		1
 	],
 	"../pages/room-list/room-list.module": [
-		320,
+		321,
 		0
 	]
 };
@@ -1966,7 +1979,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_event_event__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(180);
@@ -1974,8 +1987,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(307);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_file_transfer__ = __webpack_require__(52);
@@ -1991,9 +2004,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_audio_audio__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_event_list_event_list__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_detail_event_detail_event__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_app_version__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_file_opener__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_appupdate_service_appupdate_service__ = __webpack_require__(223);
@@ -2076,9 +2089,9 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/audio/audio.module#AudioPageModule', name: 'AudioPage', segment: 'audio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detail-event/detail-event.module#DetailEventPageModule', name: 'detailevent', segment: 'detail:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/event-list/event-list.module#EventListPageModule', name: 'EventListPage', segment: 'event-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-event/my-event.module#MyEventPageModule', name: 'myevent', segment: 'myevent', priority: 'low', defaultHistory: [] },
@@ -2139,7 +2152,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 303:
+/***/ 304:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2289,7 +2302,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 305:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2338,7 +2351,7 @@ var DepartmentServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 306:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2378,7 +2391,7 @@ var UserServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 307:
+/***/ 308:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

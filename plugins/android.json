@@ -37,6 +37,16 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
+    "cordova-plugin-mauron85-background-geolocation": {
+      "GOOGLE_PLAY_SERVICES_VERSION": "+",
+      "ICON": "@mipmap/icon",
+      "SMALL_ICON": "@mipmap/icon",
+      "ACCOUNT_NAME": "@string/app_name",
+      "ACCOUNT_LABEL": "@string/app_name",
+      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
     "cordova-plugin-media": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
@@ -53,16 +63,6 @@
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     },
     "cordova-plugin-background-mode": {
-      "PACKAGE_NAME": "com.dcqtech.zhsyl"
-    },
-    "cordova-plugin-mauron85-background-geolocation": {
-      "GOOGLE_PLAY_SERVICES_VERSION": "+",
-      "ICON": "@mipmap/icon",
-      "SMALL_ICON": "@mipmap/icon",
-      "ACCOUNT_NAME": "@string/app_name",
-      "ACCOUNT_LABEL": "@string/app_name",
-      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
     }
   },

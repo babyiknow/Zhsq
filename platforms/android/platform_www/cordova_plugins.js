@@ -231,6 +231,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
+  },
+  {
     "id": "cordova-plugin-camera.Camera",
     "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
     "pluginId": "cordova-plugin-camera",
@@ -260,14 +268,6 @@ module.exports = [
     "pluginId": "cordova-plugin-camera",
     "clobbers": [
       "CameraPopoverHandle"
-    ]
-  },
-  {
-    "id": "cordova-plugin-device.device",
-    "file": "plugins/cordova-plugin-device/www/device.js",
-    "pluginId": "cordova-plugin-device",
-    "clobbers": [
-      "device"
     ]
   },
   {
@@ -307,6 +307,14 @@ module.exports = [
     "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
     "pluginId": "cordova-plugin-geolocation",
     "runs": true
+  },
+  {
+    "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
+    "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
+    "pluginId": "cordova-plugin-mauron85-background-geolocation",
+    "clobbers": [
+      "backgroundGeolocation"
+    ]
   },
   {
     "id": "cordova-plugin-media.MediaError",
@@ -366,14 +374,6 @@ module.exports = [
       "cordova.plugins.backgroundMode",
       "plugin.backgroundMode"
     ]
-  },
-  {
-    "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
-    "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
-    "pluginId": "cordova-plugin-mauron85-background-geolocation",
-    "clobbers": [
-      "backgroundGeolocation"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -384,19 +384,19 @@ module.exports.metadata =
   "cordova-plugin-appversion": "1.0.0",
   "cordova-plugin-app-update": "1.4.14",
   "cordova-plugin-app-version": "0.1.9",
-  "cordova-plugin-camera": "3.0.0",
   "cordova-plugin-device": "1.1.7",
+  "cordova-plugin-camera": "3.0.0",
   "cordova-plugin-file-opener2": "2.0.19",
   "cordova-plugin-file-transfer": "1.7.0",
   "cordova-plugin-geolocation": "3.0.0",
   "cordova-plugin-ionic-webview": "1.1.16",
+  "cordova-plugin-mauron85-background-geolocation": "2.3.3",
   "cordova-plugin-media": "4.0.0",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-whitelist": "1.3.1",
   "ionic-plugin-keyboard": "2.2.1",
-  "cordova-plugin-background-mode": "0.7.2",
-  "cordova-plugin-mauron85-background-geolocation": "2.3.3"
+  "cordova-plugin-background-mode": "0.7.2"
 };
 // BOTTOM OF METADATA
 });

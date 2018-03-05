@@ -52,7 +52,7 @@ var CarListPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DealEventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(51);
@@ -448,14 +448,397 @@ var EventListPage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_background_mode__ = __webpack_require__(286);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var HomePage = (function () {
+    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http, backgroundGeolocation, backgroundMode) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
+        this.alertCtrl = alertCtrl;
+        this.platform = platform;
+        this.geolocation = geolocation;
+        this.http = http;
+        this.backgroundGeolocation = backgroundGeolocation;
+        this.backgroundMode = backgroundMode;
+        platform.ready().then(function () {
+            _this.PI = 3.14159265358979324;
+            _this.imgSrc = "assets/imgs/startCheck.png";
+            _this.isCheck = false;
+            _this.lastX = 0;
+            _this.lastY = 0;
+            _this.trueDistance = 0;
+            _this.truePt = {
+                X: 0,
+                Y: 0
+            };
+            _this.truePts = [];
+            _this.configureBackgroundGeoLocation();
+            // platform.pause.subscribe(() => {
+            //   if (this.isCheck) {
+            //     this.watchId.unsubscribe();
+            //     this.watchId = null;
+            //     //this.backgroundGeolocation.start();
+            //   }
+            // });
+            // platform.resume.subscribe(() => {
+            //   if (this.isCheck) {
+            //     //this.backgroundGeolocation.stop();
+            //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
+            //       this.getPositionSuccess(position.coords);
+            //     }, err => {
+            //       alert(err.message)
+            //     });
+            //   }
+            // })
+            _this.loadEsri();
+        });
+    }
+    HomePage.prototype.configureBackgroundGeoLocation = function () {
+        var _this = this;
+        var config = {
+            locationProvider: 1,
+            desiredAccuracy: 0,
+            stationaryRadius: 10,
+            distanceFilter: 2,
+            interval: 1000,
+            fastestInterval: 2000,
+            notificationTitle: '智慧石油路',
+            notificationText: '巡检中',
+            activityType: 'AutomotiveNavigation',
+            //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+            stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
+        };
+        this.backgroundGeolocation.configure(config)
+            .subscribe(function (location) {
+            _this.getPositionSuccess(location);
+            if (_this.platform.is("ios")) {
+                _this.backgroundGeolocation.finish(); // FOR IOS ONLY
+            }
+        }, function (err) { alert(err.message); });
+    };
+    HomePage.prototype.position = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition({ timeout: 5000, enableHighAccuracy: true }).then(function (pos) {
+            Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", "esri/graphic"]).then(function (_a) {
+                var Point = _a[0], PictureMarkerSymbol = _a[1], Graphic = _a[2];
+                var point = new Point(pos.coords.longitude, pos.coords.latitude, _this.map.spatialReference);
+                var symbol = new PictureMarkerSymbol('assets/imgs/layer11.png', 16, 24);
+                var graphic = new Graphic(point, symbol);
+                var postionLayer = _this.map.getLayer("postionLayer");
+                postionLayer.clear();
+                postionLayer.add(graphic);
+                _this.map.centerAt(point);
+            }).catch(function (err) {
+                _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
+            });
+        }).catch(function (err) {
+            _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
+        });
+    };
+    HomePage.prototype.stopInspection = function () {
+        this.watchId.unsubscribe();
+        this.watchId = null;
+        this.lastX = 0;
+        this.lastY = 0;
+        this.trueDistance = 0;
+        this.truePt = {
+            X: 0,
+            Y: 0
+        };
+        this.truePts = [];
+    };
+    HomePage.prototype.watchPosition = function () {
+        if (this.isCheck) {
+            this.imgSrc = "assets/imgs/startCheck.png";
+            var pt = this.truePts[this.truePts.length - 1];
+            if (pt && pt.X && pt.Y) {
+                var item = {
+                    X: pt.X,
+                    Y: pt.Y,
+                    Distance: 0,
+                    PDate: this.getDateStr(),
+                    Remark: "stop"
+                };
+                this.sendPostion(item);
+            }
+            this.stopInspection();
+            this.backgroundGeolocation.stop();
+            clearInterval(this.postId);
+            this.postId = null;
+            clearInterval(this.postHeartId);
+            this.postHeartId = null;
+        }
+        else {
+            this.imgSrc = "assets/imgs/endCheck.gif";
+            this.startInspection();
+            this.backgroundGeolocation.start();
+            this.post();
+        }
+        this.isCheck = !this.isCheck;
+    };
+    HomePage.prototype.startInspection = function () {
+        var _this = this;
+        this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(function (position) {
+            _this.getPositionSuccess(position.coords);
+        }, function (err) {
+            alert(err.message);
+        });
+    };
+    HomePage.prototype.post = function () {
+        var _this = this;
+        this.postHeartId = setInterval(function () {
+            _this.postHeart(false);
+        }, 20000);
+        this.postId = setInterval(function () {
+            if (_this.truePts.length < 1) {
+                return;
+            }
+            var distance = 0;
+            if (_this.truePts.length == 1) {
+                distance = 0;
+            }
+            else {
+                distance = _this.trueDistance;
+            }
+            var pt = _this.truePts[_this.truePts.length - 1];
+            if (pt && !pt.isPost) {
+                var item = {
+                    X: pt.X,
+                    Y: pt.Y,
+                    Distance: distance,
+                    PDate: _this.getDateStr(),
+                    Remark: "3"
+                };
+                _this.sendPostion(item);
+                pt.isPost = true;
+            }
+        }, 10000);
+    };
+    HomePage.prototype.postHeart = function (Remove) {
+        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", { Remove: Remove }, {}).subscribe(function (data) {
+        }, function (err) {
+            debugger;
+        });
+    };
+    HomePage.prototype.getDateStr = function () {
+        var Dates = new Date();
+        var year = Dates.getFullYear();
+        var month = (Dates.getMonth() + 1) < 10 ? '0' + (Dates.getMonth() + 1) : (Dates.getMonth() + 1);
+        var day = Dates.getDate() < 10 ? '0' + Dates.getDate() : Dates.getDate();
+        var hour = Dates.getHours() < 10 ? '0' + Dates.getHours() : Dates.getHours();
+        var minute = Dates.getMinutes() < 10 ? '0' + Dates.getMinutes() : Dates.getMinutes();
+        var second = Dates.getSeconds() < 10 ? '0' + Dates.getSeconds() : Dates.getSeconds();
+        var dateStr = year + '-' + month + '-' + day + " " + hour + ":" + minute + ":" + second;
+        return dateStr;
+    };
+    HomePage.prototype.getPositionSuccess = function (location) {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/geometry/Polyline", "esri/symbols/SimpleLineSymbol", "esri/graphic", "esri/Color"]).then(function (_a) {
+            var Point = _a[0], Polyline = _a[1], SimpleLineSymbol = _a[2], Graphic = _a[3], Color = _a[4];
+            var tempTime = (new Date()).getTime(); // position.timestamp; //
+            // i++;
+            // this.toastCtrl.create({ message: String(i), duration: 1500, position: "top" }).present();
+            if (!_this.isCheck) {
+                return;
+            }
+            if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
+                _this.stopInspection();
+                _this.backgroundGeolocation.stop();
+                _this.isCheck = false;
+                _this.imgSrc = "assets/imgs/startCheck.png";
+                _this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
+            }
+            if (location !== undefined) {
+                if (_this.lastX != _this.lastY) {
+                    var offX = Math.abs(_this.lastX - location.longitude);
+                    var offY = Math.abs(_this.lastY - location.latitude);
+                    if (offX == 0 && offY == 0) {
+                        return;
+                    }
+                    // if (offX < 0.0001 && offY < 0.0001) {
+                    //   //太近了 舍弃
+                    //   return;
+                    // }
+                    var distance = _this.getDistance(_this.lastX, _this.lastY, location.longitude, location.latitude);
+                    var time = (tempTime - _this.lastDateTime);
+                    // this.toastCtrl.create({ message: String(distance), duration: 1500, position: "top" }).present();
+                    // this.toastCtrl.create({ message: String(time), duration: 1500, position: "middle" }).present();
+                    if (distance <= 5 * time / 1000 && time <= 13500) {
+                        //考虑到误差 速度以5m/s计算;
+                        //防止退屏和屏幕切换,获取两点间隔时间超过10s
+                        _this.truePts.push({ X: location.longitude, Y: location.latitude, isPost: false });
+                        if (_this.truePts.length > 2) {
+                            _this.truePts.splice(0, 1);
+                        }
+                        if (_this.truePts.length == 2) {
+                            var polyline = new Polyline([[_this.truePts[0].X, _this.truePts[0].Y], [_this.truePts[1].X, _this.truePts[1].Y]]);
+                            var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 3);
+                            var graphic = new Graphic(polyline, lineSymbol);
+                            var walkLayer = _this.map.getLayer("walkLayer");
+                            walkLayer.add(graphic);
+                            _this.trueDistance = _this.getDistance(_this.truePts[0].X, _this.truePts[0].Y, _this.truePts[1].X, _this.truePts[1].Y);
+                            var point = new Point(_this.truePts[1].X, _this.truePts[1].Y, _this.map.spatialReference);
+                            var postionLayer = _this.map.getLayer("postionLayer");
+                            var grap = postionLayer.graphics[0];
+                            grap.setGeometry(point);
+                            _this.map.centerAt(point);
+                        }
+                    }
+                }
+                //this.toastCtrl.create({ message: String(tempTime), duration: 500 }).present();
+                _this.lastDateTime = tempTime;
+                _this.lastX = location.longitude;
+                _this.lastY = location.latitude;
+            }
+        });
+    };
+    HomePage.prototype.getDistance = function (latA, lonA, latB, lonB) {
+        var earthR = 6371000.;
+        var x = Math.cos(latA * this.PI / 180.) * Math.cos(latB * this.PI / 180.) * Math.cos((lonA - lonB) * this.PI / 180);
+        var y = Math.sin(latA * this.PI / 180.) * Math.sin(latB * this.PI / 180.);
+        var s = x + y;
+        if (s > 1)
+            s = 1;
+        if (s < -1)
+            s = -1;
+        var alpha = Math.acos(s);
+        var distance = alpha * earthR;
+        return distance;
+    };
+    HomePage.prototype.sendPostion = function (param) {
+        var _this = this;
+        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostPosition", param, {}).subscribe(function (data) {
+            if (data["Success"]) {
+                // let toast = this.toastCtrl.create({
+                //   message: '坐标上传成功',
+                //   duration: 1000,
+                //   position: 'bottom'
+                // });
+                // toast.present();
+            }
+            else {
+                // let toast = this.toastCtrl.create({
+                //   message: '坐标上传失败',
+                //   duration: 1000,
+                //   position: 'top'
+                // });
+                // toast.present();
+            }
+        }, function (err) {
+            var toast = _this.toastCtrl.create({
+                message: "连接服务器失败",
+                duration: 1500,
+                position: 'top'
+            });
+            toast.present();
+        });
+    };
+    HomePage.prototype.loadEsri = function () {
+        var _this = this;
+        if (!Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["a" /* isLoaded */])()) {
+            Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["c" /* loadScript */])({
+                url: "http://113.207.113.10:82/arcgis_js_api_319/library/3.19/3.19/init.js"
+                // url: '/arcgis_js_v321_api/init.js'
+            }).then(function () {
+                _this.createMapview();
+            }).catch(function (err) {
+                console.error(err.message);
+            });
+        }
+        else {
+            this.createMapview();
+        }
+    };
+    HomePage.prototype.createMapview = function () {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])([
+            "esri/map",
+            "esri/layers/ArcGISTiledMapServiceLayer",
+            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/layers/GraphicsLayer"
+        ]).then(function (_a) {
+            var Map = _a[0], ArcGISTiledMapServiceLayer = _a[1], ArcGISDynamicMapServiceLayer = _a[2], GraphicsLayer = _a[3];
+            _this.map = new Map("map", {
+                sliderPosition: "bottom-right",
+                logo: false,
+                zoom: 1
+            });
+            var layerAddress = __WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].getBaseMapAddress();
+            var layer = new ArcGISTiledMapServiceLayer(layerAddress
+            //"http://113.207.113.10:8081/arcgis/rest/services/SQ_SYL/SQ_SYL_bg/MapServer"
+            );
+            _this.map.addLayer(layer);
+            var layer2 = new ArcGISTiledMapServiceLayer("http://113.207.113.10:8081/arcgis/rest/services/SQ/Bg_KCY/MapServer");
+            _this.map.addLayer(layer2);
+            var postionLayer = new GraphicsLayer({ id: 'postionLayer' });
+            _this.map.addLayer(postionLayer);
+            var walkLayer = new GraphicsLayer({ id: 'walkLayer' });
+            _this.map.addLayer(walkLayer);
+            _this.map.on("load", function () {
+                _this.position();
+            });
+        }).catch(function (err) {
+            // console.error(err.message);
+        });
+    };
+    HomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-home',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n      <button ion-button icon-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n      </button>\n    <ion-title>移动巡检</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="main" style="width: 100%;height: 100%;">\n        <div id="map" style="margin-bottom: 0px;z-index: 0;width: 100%;">\n          <div id="maptoolbar" class="maptoolbars" (click)="watchPosition()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="{{imgSrc}}" />\n            </a><b></b>\n          </div>\n          <div id="position" class="maptoolbars" style="right: 20px;bottom: 115px;left: auto;" (click)="position()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="assets/imgs/location.png" height="28" width="30" />\n            </a><b></b>\n          </div>\n  \n        </div>\n  \n      </div>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_background_mode__["a" /* BackgroundMode */]])
+    ], HomePage);
+    return HomePage;
+}());
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_buttonback_service_buttonback_service__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -647,7 +1030,7 @@ var LoginPage = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -753,7 +1136,7 @@ var MyEventPage = (function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -765,7 +1148,7 @@ var MyEventPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__audio_audio__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1098,7 +1481,7 @@ var PresentEventPage = (function () {
 
 /***/ }),
 
-/***/ 117:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1143,7 +1526,7 @@ var PersonListPage = (function () {
 
 /***/ }),
 
-/***/ 118:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1188,379 +1571,6 @@ var RoomListPage = (function () {
 
 /***/ }),
 
-/***/ 119:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_config__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__ = __webpack_require__(180);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-var HomePage = (function () {
-    function HomePage(navCtrl, toastCtrl, alertCtrl, platform, geolocation, http, backgroundGeolocation) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.toastCtrl = toastCtrl;
-        this.alertCtrl = alertCtrl;
-        this.platform = platform;
-        this.geolocation = geolocation;
-        this.http = http;
-        this.backgroundGeolocation = backgroundGeolocation;
-        platform.ready().then(function () {
-            _this.PI = 3.14159265358979324;
-            _this.imgSrc = "assets/imgs/startCheck.png";
-            _this.isCheck = false;
-            _this.lastX = 0;
-            _this.lastY = 0;
-            _this.trueDistance = 0;
-            _this.truePt = {
-                X: 0,
-                Y: 0
-            };
-            _this.truePts = [];
-            _this.configureBackgroundGeoLocation();
-            // platform.pause.subscribe(() => {
-            //   if (this.isCheck) {
-            //     this.watchId.unsubscribe();
-            //     this.watchId = null;
-            //     //this.backgroundGeolocation.start();
-            //   }
-            // });
-            // platform.resume.subscribe(() => {
-            //   if (this.isCheck) {
-            //     //this.backgroundGeolocation.stop();
-            //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
-            //       this.getPositionSuccess(position.coords);
-            //     }, err => {
-            //       alert(err.message)
-            //     });
-            //   }
-            // })
-            _this.loadEsri();
-        });
-    }
-    HomePage.prototype.configureBackgroundGeoLocation = function () {
-        var _this = this;
-        var config = {
-            desiredAccuracy: 0,
-            stationaryRadius: 10,
-            distanceFilter: 2,
-            interval: 1000,
-            fastestInterval: 2000,
-            notificationTitle: '智慧石油路',
-            notificationText: '巡检中',
-            activityType: 'AutomotiveNavigation',
-            //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-            stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
-        };
-        this.backgroundGeolocation.configure(config)
-            .subscribe(function (location) {
-            _this.getPositionSuccess(location);
-            if (_this.platform.is("ios")) {
-                _this.backgroundGeolocation.finish(); // FOR IOS ONLY
-            }
-        }, function (err) { alert(err.message); });
-    };
-    HomePage.prototype.position = function () {
-        var _this = this;
-        this.geolocation.getCurrentPosition({ timeout: 5000, enableHighAccuracy: true }).then(function (pos) {
-            Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", "esri/graphic"]).then(function (_a) {
-                var Point = _a[0], PictureMarkerSymbol = _a[1], Graphic = _a[2];
-                var point = new Point(pos.coords.longitude, pos.coords.latitude, _this.map.spatialReference);
-                var symbol = new PictureMarkerSymbol('assets/imgs/layer11.png', 16, 24);
-                var graphic = new Graphic(point, symbol);
-                var postionLayer = _this.map.getLayer("postionLayer");
-                postionLayer.clear();
-                postionLayer.add(graphic);
-                _this.map.centerAt(point);
-            }).catch(function (err) {
-                _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
-            });
-        }).catch(function (err) {
-            _this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
-        });
-    };
-    HomePage.prototype.stopInspection = function () {
-        this.watchId.unsubscribe();
-        this.watchId = null;
-        this.lastX = 0;
-        this.lastY = 0;
-        this.trueDistance = 0;
-        this.truePt = {
-            X: 0,
-            Y: 0
-        };
-        this.truePts = [];
-    };
-    HomePage.prototype.watchPosition = function () {
-        if (this.isCheck) {
-            this.imgSrc = "assets/imgs/startCheck.png";
-            var pt = this.truePts[this.truePts.length - 1];
-            if (pt && pt.X && pt.Y) {
-                var item = {
-                    X: pt.X,
-                    Y: pt.Y,
-                    Distance: 0,
-                    PDate: this.getDateStr(),
-                    Remark: "stop"
-                };
-                this.sendPostion(item);
-            }
-            this.stopInspection();
-            this.backgroundGeolocation.stop();
-            clearInterval(this.postId);
-            this.postId = null;
-            clearInterval(this.postHeartId);
-            this.postHeartId = null;
-        }
-        else {
-            this.imgSrc = "assets/imgs/endCheck.gif";
-            this.startInspection();
-            this.backgroundGeolocation.start();
-            this.post();
-        }
-        this.isCheck = !this.isCheck;
-    };
-    HomePage.prototype.startInspection = function () {
-        var _this = this;
-        this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(function (position) {
-            _this.getPositionSuccess(position.coords);
-        }, function (err) {
-            alert(err.message);
-        });
-    };
-    HomePage.prototype.post = function () {
-        var _this = this;
-        this.postHeartId = setInterval(function () {
-            _this.postHeart(false);
-        }, 20000);
-        this.postId = setInterval(function () {
-            if (_this.truePts.length < 1) {
-                return;
-            }
-            var distance = 0;
-            if (_this.truePts.length == 1) {
-                distance = 0;
-            }
-            else {
-                distance = _this.trueDistance;
-            }
-            var pt = _this.truePts[_this.truePts.length - 1];
-            if (pt && !pt.isPost) {
-                var item = {
-                    X: pt.X,
-                    Y: pt.Y,
-                    Distance: distance,
-                    PDate: _this.getDateStr(),
-                    Remark: "3"
-                };
-                _this.sendPostion(item);
-                pt.isPost = true;
-            }
-        }, 10000);
-    };
-    HomePage.prototype.postHeart = function (Remove) {
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", { Remove: Remove }, {}).subscribe(function (data) {
-        }, function (err) {
-            debugger;
-        });
-    };
-    HomePage.prototype.getDateStr = function () {
-        var Dates = new Date();
-        var year = Dates.getFullYear();
-        var month = (Dates.getMonth() + 1) < 10 ? '0' + (Dates.getMonth() + 1) : (Dates.getMonth() + 1);
-        var day = Dates.getDate() < 10 ? '0' + Dates.getDate() : Dates.getDate();
-        var hour = Dates.getHours() < 10 ? '0' + Dates.getHours() : Dates.getHours();
-        var minute = Dates.getMinutes() < 10 ? '0' + Dates.getMinutes() : Dates.getMinutes();
-        var second = Dates.getSeconds() < 10 ? '0' + Dates.getSeconds() : Dates.getSeconds();
-        var dateStr = year + '-' + month + '-' + day + " " + hour + ":" + minute + ":" + second;
-        return dateStr;
-    };
-    HomePage.prototype.getPositionSuccess = function (location) {
-        var _this = this;
-        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])(["esri/geometry/Point", "esri/geometry/Polyline", "esri/symbols/SimpleLineSymbol", "esri/graphic", "esri/Color"]).then(function (_a) {
-            var Point = _a[0], Polyline = _a[1], SimpleLineSymbol = _a[2], Graphic = _a[3], Color = _a[4];
-            var tempTime = (new Date()).getTime(); // position.timestamp; //
-            // i++;
-            // this.toastCtrl.create({ message: String(i), duration: 1500, position: "top" }).present();
-            if (!_this.isCheck) {
-                return;
-            }
-            if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
-                _this.stopInspection();
-                _this.backgroundGeolocation.stop();
-                _this.isCheck = false;
-                _this.imgSrc = "assets/imgs/startCheck.png";
-                _this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
-            }
-            if (location !== undefined) {
-                if (_this.lastX != _this.lastY) {
-                    var offX = Math.abs(_this.lastX - location.longitude);
-                    var offY = Math.abs(_this.lastY - location.latitude);
-                    if (offX == 0 && offY == 0) {
-                        return;
-                    }
-                    // if (offX < 0.0001 && offY < 0.0001) {
-                    //   //太近了 舍弃
-                    //   return;
-                    // }
-                    var distance = _this.getDistance(_this.lastX, _this.lastY, location.longitude, location.latitude);
-                    var time = (tempTime - _this.lastDateTime);
-                    // this.toastCtrl.create({ message: String(distance), duration: 1500, position: "top" }).present();
-                    // this.toastCtrl.create({ message: String(time), duration: 1500, position: "middle" }).present();
-                    if (distance <= 5 * time / 1000 && time <= 13500) {
-                        //考虑到误差 速度以5m/s计算;
-                        //防止退屏和屏幕切换,获取两点间隔时间超过10s
-                        _this.truePts.push({ X: location.longitude, Y: location.latitude, isPost: false });
-                        if (_this.truePts.length > 2) {
-                            _this.truePts.splice(0, 1);
-                        }
-                        if (_this.truePts.length == 2) {
-                            var polyline = new Polyline([[_this.truePts[0].X, _this.truePts[0].Y], [_this.truePts[1].X, _this.truePts[1].Y]]);
-                            var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 3);
-                            var graphic = new Graphic(polyline, lineSymbol);
-                            var walkLayer = _this.map.getLayer("walkLayer");
-                            walkLayer.add(graphic);
-                            _this.trueDistance = _this.getDistance(_this.truePts[0].X, _this.truePts[0].Y, _this.truePts[1].X, _this.truePts[1].Y);
-                            var point = new Point(_this.truePts[1].X, _this.truePts[1].Y, _this.map.spatialReference);
-                            var postionLayer = _this.map.getLayer("postionLayer");
-                            var grap = postionLayer.graphics[0];
-                            grap.setGeometry(point);
-                            _this.map.centerAt(point);
-                        }
-                    }
-                }
-                //this.toastCtrl.create({ message: String(tempTime), duration: 500 }).present();
-                _this.lastDateTime = tempTime;
-                _this.lastX = location.longitude;
-                _this.lastY = location.latitude;
-            }
-        });
-    };
-    HomePage.prototype.getDistance = function (latA, lonA, latB, lonB) {
-        var earthR = 6371000.;
-        var x = Math.cos(latA * this.PI / 180.) * Math.cos(latB * this.PI / 180.) * Math.cos((lonA - lonB) * this.PI / 180);
-        var y = Math.sin(latA * this.PI / 180.) * Math.sin(latB * this.PI / 180.);
-        var s = x + y;
-        if (s > 1)
-            s = 1;
-        if (s < -1)
-            s = -1;
-        var alpha = Math.acos(s);
-        var distance = alpha * earthR;
-        return distance;
-    };
-    HomePage.prototype.sendPostion = function (param) {
-        var _this = this;
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.ThreeDMap/Home/PostPosition", param, {}).subscribe(function (data) {
-            if (data["Success"]) {
-                // let toast = this.toastCtrl.create({
-                //   message: '坐标上传成功',
-                //   duration: 1000,
-                //   position: 'bottom'
-                // });
-                // toast.present();
-            }
-            else {
-                // let toast = this.toastCtrl.create({
-                //   message: '坐标上传失败',
-                //   duration: 1000,
-                //   position: 'top'
-                // });
-                // toast.present();
-            }
-        }, function (err) {
-            var toast = _this.toastCtrl.create({
-                message: "连接服务器失败",
-                duration: 1500,
-                position: 'top'
-            });
-            toast.present();
-        });
-    };
-    HomePage.prototype.loadEsri = function () {
-        var _this = this;
-        if (!Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["a" /* isLoaded */])()) {
-            Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["c" /* loadScript */])({
-                url: "http://113.207.113.10:82/arcgis_js_api_319/library/3.19/3.19/init.js"
-                // url: '/arcgis_js_v321_api/init.js'
-            }).then(function () {
-                _this.createMapview();
-            }).catch(function (err) {
-                console.error(err.message);
-            });
-        }
-        else {
-            this.createMapview();
-        }
-    };
-    HomePage.prototype.createMapview = function () {
-        var _this = this;
-        Object(__WEBPACK_IMPORTED_MODULE_2_esri_loader_dist_esm_esri_loader__["b" /* loadModules */])([
-            "esri/map",
-            "esri/layers/ArcGISTiledMapServiceLayer",
-            "esri/layers/ArcGISDynamicMapServiceLayer",
-            "esri/layers/GraphicsLayer"
-        ]).then(function (_a) {
-            var Map = _a[0], ArcGISTiledMapServiceLayer = _a[1], ArcGISDynamicMapServiceLayer = _a[2], GraphicsLayer = _a[3];
-            _this.map = new Map("map", {
-                sliderPosition: "bottom-right",
-                logo: false,
-                zoom: 1
-            });
-            var layerAddress = __WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].getBaseMapAddress();
-            var layer = new ArcGISTiledMapServiceLayer(layerAddress
-            //"http://113.207.113.10:8081/arcgis/rest/services/SQ_SYL/SQ_SYL_bg/MapServer"
-            );
-            _this.map.addLayer(layer);
-            var layer2 = new ArcGISTiledMapServiceLayer("http://113.207.113.10:8081/arcgis/rest/services/SQ/Bg_KCY/MapServer");
-            _this.map.addLayer(layer2);
-            var postionLayer = new GraphicsLayer({ id: 'postionLayer' });
-            _this.map.addLayer(postionLayer);
-            var walkLayer = new GraphicsLayer({ id: 'walkLayer' });
-            _this.map.addLayer(walkLayer);
-            _this.map.on("load", function () {
-                _this.position();
-            });
-        }).catch(function (err) {
-            // console.error(err.message);
-        });
-    };
-    HomePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n      <button ion-button icon-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n      </button>\n    <ion-title>移动巡检</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <div class="main" style="width: 100%;height: 100%;">\n        <div id="map" style="margin-bottom: 0px;z-index: 0;width: 100%;">\n          <div id="maptoolbar" class="maptoolbars" (click)="watchPosition()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="{{imgSrc}}" />\n            </a><b></b>\n          </div>\n          <div id="position" class="maptoolbars" style="right: 20px;bottom: 115px;left: auto;" (click)="position()">\n            <a name="POLYLINE">\n              <img id="img" align="absmiddle" src="assets/imgs/location.png" height="28" width="30" />\n            </a><b></b>\n          </div>\n  \n        </div>\n  \n      </div>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\home\home.html"*/
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__["a" /* BackgroundGeolocation */]) === "function" && _g || Object])
-    ], HomePage);
-    return HomePage;
-    var _a, _b, _c, _d, _e, _f, _g;
-}());
-
-//# sourceMappingURL=home.js.map
-
-/***/ }),
-
 /***/ 133:
 /***/ (function(module, exports) {
 
@@ -1592,9 +1602,10 @@ var AppConfig = (function () {
     AppConfig.setBaseMapAddress = function (url) {
         this.baseMapAddress = url;
     };
-    AppConfig.appUrl = "/app";
+    //public static appUrl:string="/app";  
     //public static appUrl: string = "http://192.168.1.105:61186";//"http://zhsq.cqmap.com/gxc";
     //public static appUrl: string = "http://zhsq.cqmap.com/syl";
+    AppConfig.appUrl = "http://zhsq.cqmap.com/sq_test";
     AppConfig.online = true;
     return AppConfig;
 }());
@@ -1608,23 +1619,23 @@ var AppConfig = (function () {
 
 var map = {
 	"../pages/audio/audio.module": [
-		309,
+		310,
 		11
 	],
 	"../pages/car-list/car-list.module": [
-		310,
+		311,
 		10
 	],
 	"../pages/deal-event/deal-event.module": [
-		311,
+		312,
 		9
 	],
 	"../pages/detail-event/detail-event.module": [
-		312,
+		313,
 		8
 	],
 	"../pages/event-list/event-list.module": [
-		313,
+		314,
 		7
 	],
 	"../pages/home/home.module": [
@@ -1632,11 +1643,11 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		314,
+		316,
 		5
 	],
 	"../pages/my-event/my-event.module": [
-		316,
+		317,
 		4
 	],
 	"../pages/person-list/person-list.module": [
@@ -1644,15 +1655,15 @@ var map = {
 		3
 	],
 	"../pages/picture/picture.module": [
-		317,
+		319,
 		2
 	],
 	"../pages/present-event/present-event.module": [
-		319,
+		320,
 		1
 	],
 	"../pages/room-list/room-list.module": [
-		320,
+		321,
 		0
 	]
 };
@@ -1672,7 +1683,7 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 178:
+/***/ 179:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1681,8 +1692,8 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_event_my_event__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_event_my_event__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event_list_event_list__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1782,15 +1793,15 @@ var EventPage = (function () {
 
 /***/ }),
 
-/***/ 179:
+/***/ 180:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_list_room_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_list_room_list__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__car_list_car_list__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1968,40 +1979,40 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_event_event__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(179);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_event_event__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_contact__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_department_service_department_service__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_user_service_user_service__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_file__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_media__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_event_my_event__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_event_my_event__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_car_list_car_list__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_deal_event_deal_event__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_room_list_room_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_room_list_room_list__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_audio_audio__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_event_list_event_list__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_detail_event_detail_event__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_http_service_http_service__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_app_version__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_app_update__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_file_opener__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_buttonback_service_buttonback_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_appupdate_service_appupdate_service__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_picture_picture__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__ionic_native_network__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ionic_native_background_geolocation__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ionic_native_background_geolocation__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__app_config__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2081,11 +2092,11 @@ var AppModule = (function () {
                         { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detail-event/detail-event.module#DetailEventPageModule', name: 'detailevent', segment: 'detail:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/event-list/event-list.module#EventListPageModule', name: 'EventListPage', segment: 'event-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-event/my-event.module#MyEventPageModule', name: 'myevent', segment: 'myevent', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/picture/picture.module#PicturePageModule', name: 'PicturePage', segment: 'picture', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/person-list/person-list.module#PersonListPageModule', name: 'PersonListPage', segment: 'person-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/picture/picture.module#PicturePageModule', name: 'PicturePage', segment: 'picture', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/present-event/present-event.module#PresentEventPageModule', name: 'presentevent', segment: 'presentevent', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/room-list/room-list.module#RoomListPageModule', name: 'RoomListPage', segment: 'room-list', priority: 'low', defaultHistory: [] }
                     ]
@@ -2141,7 +2152,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 303:
+/***/ 304:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2150,8 +2161,8 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_version__ = __webpack_require__(222);
@@ -2291,7 +2302,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 305:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2340,7 +2351,7 @@ var DepartmentServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 306:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2380,7 +2391,7 @@ var UserServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 307:
+/***/ 308:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2731,7 +2742,7 @@ var DetailEventPage = (function () {
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2839,16 +2850,16 @@ var BackButtonService = (function () {
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_event__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(179);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_event__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_buttonback_service_buttonback_service__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

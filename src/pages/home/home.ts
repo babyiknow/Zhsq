@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app/app.config';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+import { BackgroundMode } from '@ionic-native/background-mode';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -25,8 +26,15 @@ export class HomePage {
   postId;
   postHeartId;
   PI;
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public platform: Platform, public geolocation: Geolocation,
-    private http: HttpClient, private backgroundGeolocation: BackgroundGeolocation) {
+  constructor(public navCtrl: NavController,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController,
+    public platform: Platform,
+    public geolocation: Geolocation,
+    private http: HttpClient,
+    private backgroundGeolocation: BackgroundGeolocation,
+    //private backgroundMode: BackgroundMode
+  ) {
     platform.ready().then(() => {
 
       this.PI = 3.14159265358979324;
@@ -65,6 +73,7 @@ export class HomePage {
   }
   private configureBackgroundGeoLocation() {
     const config: BackgroundGeolocationConfig = {
+      locationProvider: 1,
       desiredAccuracy: 0,
       stationaryRadius: 10,
       distanceFilter: 2,
@@ -74,7 +83,7 @@ export class HomePage {
       notificationText: '巡检中', // <-- android only, customize the text of the notification
       activityType: 'AutomotiveNavigation',
       //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-      stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+      stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
     };
     this.backgroundGeolocation.configure(config)
       .subscribe((location: BackgroundGeolocationResponse) => {
@@ -134,7 +143,7 @@ export class HomePage {
       clearInterval(this.postId);
       this.postId = null;
       clearInterval(this.postHeartId);
-      this.postHeartId=null;
+      this.postHeartId = null;
 
     }
     else {
@@ -153,10 +162,10 @@ export class HomePage {
     });
   }
   private post() {
-    this.postHeartId=setInterval(()=>{
+    this.postHeartId = setInterval(() => {
       this.postHeart(false);
-    },20000);
-    this.postId = setInterval(() => {    
+    }, 20000);
+    this.postId = setInterval(() => {
       if (this.truePts.length < 1) {
         return;
       }
@@ -168,7 +177,7 @@ export class HomePage {
         distance = this.trueDistance;
       }
       let pt = this.truePts[this.truePts.length - 1];
-      if (pt&&!pt.isPost) {
+      if (pt && !pt.isPost) {
         let item = {
           X: pt.X,
           Y: pt.Y,
@@ -181,10 +190,10 @@ export class HomePage {
       }
     }, 10000);
   }
-  private postHeart(Remove:boolean){
-    this.http.post(AppConfig.appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart",{Remove:Remove}, {}).subscribe((data: Response) => {
-      
-    },err=>{
+  private postHeart(Remove: boolean) {
+    this.http.post(AppConfig.appUrl + "/Dcqtech.ThreeDMap/Home/PostHeart", { Remove: Remove }, {}).subscribe((data: Response) => {
+
+    }, err => {
       debugger;
     });
   }
@@ -219,8 +228,8 @@ export class HomePage {
         if (this.lastX != this.lastY) {
           let offX = Math.abs(this.lastX - location.longitude);
           let offY = Math.abs(this.lastY - location.latitude);
-          
-          if(offX ==0&& offY==0){
+
+          if (offX == 0 && offY == 0) {
             return;
           }
           // if (offX < 0.0001 && offY < 0.0001) {

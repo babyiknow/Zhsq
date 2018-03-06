@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app/app.config';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { BatteryStatus,BatteryStatusResponse } from '@ionic-native/battery-status';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -26,14 +27,16 @@ export class HomePage {
   postId;
   postHeartId;
   PI;
+  batterysubscription;
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public platform: Platform,
     public geolocation: Geolocation,
-    private http: HttpClient,
-    private backgroundGeolocation: BackgroundGeolocation,
-    //private backgroundMode: BackgroundMode
+    public http: HttpClient,
+    public backgroundGeolocation: BackgroundGeolocation,
+    public backgroundMode: BackgroundMode,
+    private batteryStatus: BatteryStatus
   ) {
     platform.ready().then(() => {
 
@@ -48,17 +51,28 @@ export class HomePage {
         Y: 0
       };
       this.truePts = [];
-      this.configureBackgroundGeoLocation();
+      this.configureBackgroundGeoLocation();  
+      this.batterysubscription = this.batteryStatus.onChange().subscribe(
+        (status: BatteryStatusResponse) => {
+          //console.log(status.level, status.isPlugged);
+          this.backgroundGeolocation.start();
+          clearInterval(this.postId);
+          this.postId = null;
+          clearInterval(this.postHeartId);
+          this.postHeartId = null;
+          this.post();
+        }
+       );
       // platform.pause.subscribe(() => {
       //   if (this.isCheck) {
       //     this.watchId.unsubscribe();
       //     this.watchId = null;
-      //     //this.backgroundGeolocation.start();
+      //     this.backgroundGeolocation.start();
       //   }
       // });
       // platform.resume.subscribe(() => {
       //   if (this.isCheck) {
-      //     //this.backgroundGeolocation.stop();
+      //     this.backgroundGeolocation.stop();
       //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
       //       this.getPositionSuccess(position.coords);
       //     }, err => {
@@ -68,22 +82,21 @@ export class HomePage {
 
       // })
       this.loadEsri();
+     
     });
-
   }
   private configureBackgroundGeoLocation() {
     const config: BackgroundGeolocationConfig = {
-      locationProvider: 1,
-      desiredAccuracy: 0,
-      stationaryRadius: 10,
-      distanceFilter: 2,
+      desiredAccuracy: 10,
+      stationaryRadius: 20,
+      distanceFilter: 30,
       interval: 1000,
       fastestInterval: 2000,
       notificationTitle: '智慧石油路', // <-- android only, customize the title of the notification
       notificationText: '巡检中', // <-- android only, customize the text of the notification
       activityType: 'AutomotiveNavigation',
       //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-      stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
+      stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
     };
     this.backgroundGeolocation.configure(config)
       .subscribe((location: BackgroundGeolocationResponse) => {
@@ -105,7 +118,6 @@ export class HomePage {
         this.map.centerAt(point);
       }).catch(err => {
         this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
-
       })
 
     }).catch(err => {
@@ -126,6 +138,7 @@ export class HomePage {
   }
   public watchPosition() {
     if (this.isCheck) {
+      //this.backgroundMode.disable();
       this.imgSrc = "assets/imgs/startCheck.png";
       let pt = this.truePts[this.truePts.length - 1];
       if (pt && pt.X && pt.Y) {
@@ -138,6 +151,7 @@ export class HomePage {
         };
         this.sendPostion(item);
       }
+      this.batterysubscription.unsubscribe();
       this.stopInspection();
       this.backgroundGeolocation.stop();
       clearInterval(this.postId);
@@ -147,9 +161,10 @@ export class HomePage {
 
     }
     else {
-      this.imgSrc = "assets/imgs/endCheck.gif";
-      this.startInspection();
+     // this.backgroundMode.enable();
+      this.imgSrc = "assets/imgs/endCheck.gif"; 
       this.backgroundGeolocation.start();
+      this.startInspection();
       this.post();
     }
     this.isCheck = !this.isCheck;
@@ -238,8 +253,7 @@ export class HomePage {
           // }
           let distance = this.getDistance(this.lastX, this.lastY, location.longitude, location.latitude);
           let time: number = (tempTime - this.lastDateTime);
-          // this.toastCtrl.create({ message: String(distance), duration: 1500, position: "top" }).present();
-          // this.toastCtrl.create({ message: String(time), duration: 1500, position: "middle" }).present();
+
           if (distance <= 5 * time / 1000 && time <= 13500) {
             //考虑到误差 速度以5m/s计算;
             //防止退屏和屏幕切换,获取两点间隔时间超过10s

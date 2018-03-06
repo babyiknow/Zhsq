@@ -36,7 +36,10 @@ import { PicturePage } from "../pages/picture/picture";
 import { Network } from '@ionic-native/network';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 //import { HTTP } from '@ionic-native/http';
+import { BatteryStatus } from '@ionic-native/battery-status';
+import {BackgroundMode} from '@ionic-native/background-mode'
 import{AppConfig} from './app.config';
+
 
 @NgModule({
   declarations: [
@@ -89,12 +92,14 @@ import{AppConfig} from './app.config';
     Geolocation,
     File,
     BackgroundGeolocation,
+    BackgroundMode,
     FileOpener,
     AppVersion,
     AppUpdate,
     FileTransfer,
     Camera,
     Media,
+    BatteryStatus,
    // HTTP,
     Network,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

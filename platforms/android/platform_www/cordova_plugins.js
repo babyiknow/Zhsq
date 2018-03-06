@@ -374,6 +374,14 @@ module.exports = [
       "cordova.plugins.backgroundMode",
       "plugin.backgroundMode"
     ]
+  },
+  {
+    "id": "cordova-plugin-battery-status.battery",
+    "file": "plugins/cordova-plugin-battery-status/www/battery.js",
+    "pluginId": "cordova-plugin-battery-status",
+    "clobbers": [
+      "navigator.battery"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -396,7 +404,8 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-whitelist": "1.3.1",
   "ionic-plugin-keyboard": "2.2.1",
-  "cordova-plugin-background-mode": "0.7.2"
+  "cordova-plugin-background-mode": "0.7.2",
+  "cordova-plugin-battery-status": "2.0.1"
 };
 // BOTTOM OF METADATA
 });

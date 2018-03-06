@@ -64,6 +64,9 @@
     },
     "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "com.dcqtech.zhsyl"
+    },
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.dcqtech.zhsyl"
     }
   },
   "dependent_plugins": {

@@ -7,9 +7,8 @@
   },
   "proxies": [
     {
-      "path": "/app",
-     
-      "proxyUrl":"http://192.168.1.105:61186"
+      "path": "/app",     
+      "proxyUrl":"http://zhsq.cqmap.com/syl"
     }
   ]
 }

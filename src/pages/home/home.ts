@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, ToastController } from 'ionic-angular';
 import { isLoaded, loadScript, loadModules } from 'esri-loader/dist/esm/esri-loader';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation,PositionError } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app/app.config';
@@ -123,11 +123,37 @@ export class HomePage {
         postionLayer.add(graphic);
         this.map.centerAt(point);
       }).catch(err => {
-        this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
+        switch(err.code){
+         case PositionError.PERMISSION_DENIED:
+         this.alertCtrl.create({ title: '提示', message:"应用没有定位权限", buttons: ["确定"] }).present();
+         break;
+         case PositionError.POSITION_UNAVAILABLE:
+         this.alertCtrl.create({ title: '提示', message:"应用定位不可用", buttons: ["确定"] }).present();
+         break;
+         case PositionError.TIMEOUT:
+         this.alertCtrl.create({ title: '提示', message:"应用定位超时", buttons: ["确定"] }).present();
+         default:
+         this.alertCtrl.create({ title: '提示', message:"未知错误", buttons: ["确定"] }).present();
+         break;
+        }
+        
       })
 
     }).catch(err => {
-      this.alertCtrl.create({ title: '提示', message: err.message, buttons: ["确定"] }).present();
+      switch(err.code){
+        case PositionError.PERMISSION_DENIED:
+        this.alertCtrl.create({ title: '提示', message:"应用没有定位权限", buttons: ["确定"] }).present();
+        break;
+        case PositionError.POSITION_UNAVAILABLE:
+        this.alertCtrl.create({ title: '提示', message:"应用定位不可用", buttons: ["确定"] }).present();
+        break;
+        case PositionError.TIMEOUT:
+        this.alertCtrl.create({ title: '提示', message:"应用定位超时", buttons: ["确定"] }).present();
+        default:
+        this.alertCtrl.create({ title: '提示', message:"未知错误", buttons: ["确定"] }).present();
+        break;
+       }
+       
     });
   }
   private stopInspection() {
@@ -189,7 +215,7 @@ export class HomePage {
   private post() {
     this.postHeartId = setInterval(() => {
       this.postHeart(false);
-    }, 20000);
+    }, 60000);
     this.postId = setInterval(() => {
       if (this.truePts.length < 1) {
         return;
@@ -240,10 +266,7 @@ export class HomePage {
       // this.toastCtrl.create({ message: String(i), duration: 1500, position: "top" }).present();
       if (!this.isCheck) {
         return;
-      }
-     
-
-
+      }    
       if (location !== undefined) {
         if (this.lastX != this.lastY) {
           let offX = Math.abs(this.lastX - location.longitude);

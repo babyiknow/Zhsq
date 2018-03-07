@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ModalController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ModalController, ToastController, LoadingController,AlertController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app/app.config';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -39,7 +39,8 @@ export class PresentEventPage {
   y;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private camera: Camera, public actionSheetCtrl: ActionSheetController,
     private transfer: FileTransfer, private file: File, private geolocation: Geolocation, private platform: Platform, public modalCtrl: ModalController,
-    private toastCtrl: ToastController, private loadCtrl: LoadingController) {
+    private toastCtrl: ToastController, private loadCtrl: LoadingController,
+    public alertCtrl: AlertController,) {
     this.audios = [];
     this.pictures = [];
     this.explain = '';
@@ -94,29 +95,19 @@ export class PresentEventPage {
         alert(JSON.stringify(err));
       })
     }).catch(err => {
-      this.x=106.499486;
-      this.y=29.547141;
-      this.position=String(this.x)+";"+String(this.y);
-      this.http.post(AppConfig.appUrl + "/Dcqtech.Affairs/Content/GetGeoByPoint", {
-        geoType: (2 | 4),
-        x: this.x,
-        y: this.y
-      }, {}).subscribe((data: any) => {
-        console.log(data);
-        if (data.Status) {
-          if (data.Obj.village.length > 0) {
-            this.villageSeleted = data.Obj.village[0].ID;//{ value: data.Obj.village[0].ID,text: data.Obj.village[0].VillageName };
-          }
-          if (data.Obj.grid.length > 0) {
-            this.gridSeleted = data.Obj.grid[0].ID; //{ value: data.Obj.grid[0].ID,text: data.Obj.grid[0].GridName  };
-          }
-        }
-
-      }, err => {
-        this.villageSeleted = { value: 3 };
-        this.gridSeleted = { value: 2 };
-        alert("错误");
-      });
+      switch(err.code){
+        case PositionError.PERMISSION_DENIED:
+        this.alertCtrl.create({ title: '提示', message:"应用没有定位权限,不能进行事件上报", buttons: ["确定"] }).present();
+        break;
+        case PositionError.POSITION_UNAVAILABLE:
+        this.alertCtrl.create({ title: '提示', message:"应用定位不可用,不能进行事件上报", buttons: ["确定"] }).present();
+        break;
+        case PositionError.TIMEOUT:
+        this.alertCtrl.create({ title: '提示', message:"应用定位超时,不能进行事件上报", buttons: ["确定"] }).present();
+        default:
+        this.alertCtrl.create({ title: '提示', message:"未知错误,不能进行事件上报", buttons: ["确定"] }).present();
+        break;
+       }      
     });
   }
   getVillage() {
@@ -127,12 +118,10 @@ export class PresentEventPage {
       //this.events=data;     
       if (data["Success"]) {
         this.villages = data["Response"]["village"];
-        this.grids = data["Response"]["grid"];
-
-        
+        this.grids = data["Response"]["grid"];      
       }
     }, err => {
-      alert("错误");
+      alert("获取网格小区失败");
     })
   }
   getEventType() {
@@ -141,7 +130,7 @@ export class PresentEventPage {
         this.eventTypes = data["Response"];
       }
     }, err => {
-      alert("错误");
+      alert("获取事件类型失败");
     })
   }
   public postEvent(event) {
@@ -315,7 +304,7 @@ export class PresentEventPage {
   }
   public playRecord(url) {
     if (!url) {
-      alert("测试");
+      //alert("测试");
       return;
     }
     let model = this.modalCtrl.create(AudioPage, { type: "play", path: url });

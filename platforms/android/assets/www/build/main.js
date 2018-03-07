@@ -4,51 +4,6 @@ webpackJsonp([12],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the CarListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CarListPage = (function () {
-    function CarListPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    CarListPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CarListPage');
-    };
-    CarListPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-car-list',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\car-list\car-list.html"*/'<!--\n  Generated template for the CarListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>车辆管理</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only >\n          <ion-icon name="add-circle"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  \n</ion-header>\n\n\n<ion-content style="padding:5px">\n    <ion-searchbar\n    [(ngModel)]="searchText"\n    [showCancelButton]="shouldShowCancel" placeholder="搜索">\n  </ion-searchbar>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\car-list\car-list.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], CarListPage);
-    return CarListPage;
-}());
-
-//# sourceMappingURL=car-list.js.map
-
-/***/ }),
-
-/***/ 111:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DealEventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
@@ -279,6 +234,51 @@ var DealEventPage = (function () {
 
 /***/ }),
 
+/***/ 111:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the CarListPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CarListPage = (function () {
+    function CarListPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    CarListPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CarListPage');
+    };
+    CarListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-car-list',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\car-list\car-list.html"*/'<!--\n  Generated template for the CarListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>车辆管理</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only >\n          <ion-icon name="add-circle"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  \n</ion-header>\n\n\n<ion-content style="padding:5px">\n    <ion-searchbar\n    [(ngModel)]="searchText"\n    [showCancelButton]="shouldShowCancel" placeholder="搜索">\n  </ion-searchbar>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\car-list\car-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], CarListPage);
+    return CarListPage;
+}());
+
+//# sourceMappingURL=car-list.js.map
+
+/***/ }),
+
 /***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -503,29 +503,39 @@ var HomePage = (function () {
             _this.truePts = [];
             _this.configureBackgroundGeoLocation();
             _this.batterysubscription = _this.batteryStatus.onChange().subscribe(function (status) {
-                //console.log(status.level, status.isPlugged);
                 _this.backgroundGeolocation.start();
+                clearInterval(_this.postId);
+                _this.postId = null;
+                clearInterval(_this.postHeartId);
+                _this.postHeartId = null;
+                _this.post();
             });
-            // platform.pause.subscribe(() => {
-            //   if (this.isCheck) {
-            //     this.watchId.unsubscribe();
-            //     this.watchId = null;
-            //     this.backgroundGeolocation.start();
-            //   }
-            // });
-            // platform.resume.subscribe(() => {
-            //   if (this.isCheck) {
-            //     this.backgroundGeolocation.stop();
-            //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
-            //       this.getPositionSuccess(position.coords);
-            //     }, err => {
-            //       alert(err.message)
-            //     });
-            //   }
-            // })
             _this.loadEsri();
         });
     }
+    HomePage.prototype.addNetEvent = function () {
+        var _this = this;
+        this.checkNetOnlineId = setInterval(function () {
+            if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
+                var timeoutId_1 = setTimeout(function () {
+                    if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
+                        _this.removeNetEvent();
+                        _this.stopInspection();
+                        _this.backgroundGeolocation.stop();
+                        _this.isCheck = false;
+                        _this.imgSrc = "assets/imgs/startCheck.png";
+                        _this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
+                    }
+                    clearTimeout(timeoutId_1);
+                    timeoutId_1 = null;
+                }, 300000);
+            }
+        }, 1500);
+    };
+    HomePage.prototype.removeNetEvent = function () {
+        clearInterval(this.checkNetOnlineId);
+        this.checkNetOnlineId = null;
+    };
     HomePage.prototype.configureBackgroundGeoLocation = function () {
         var _this = this;
         var config = {
@@ -601,9 +611,11 @@ var HomePage = (function () {
             this.postId = null;
             clearInterval(this.postHeartId);
             this.postHeartId = null;
+            this.removeNetEvent();
         }
         else {
             // this.backgroundMode.enable();
+            this.addNetEvent();
             this.imgSrc = "assets/imgs/endCheck.gif";
             this.backgroundGeolocation.start();
             this.startInspection();
@@ -676,13 +688,7 @@ var HomePage = (function () {
             if (!_this.isCheck) {
                 return;
             }
-            if (!__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online) {
-                _this.stopInspection();
-                _this.backgroundGeolocation.stop();
-                _this.isCheck = false;
-                _this.imgSrc = "assets/imgs/startCheck.png";
-                _this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
-            }
+            _this.toastCtrl.create({ message: String(__WEBPACK_IMPORTED_MODULE_5__app_app_config__["a" /* AppConfig */].online), duration: 500 }).present();
             if (location !== undefined) {
                 if (_this.lastX != _this.lastY) {
                     var offX = Math.abs(_this.lastX - location.longitude);
@@ -836,6 +842,157 @@ var HomePage = (function () {
 /***/ }),
 
 /***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the PersonListPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var PersonListPage = (function () {
+    function PersonListPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    PersonListPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PersonListPage');
+    };
+    PersonListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-person-list',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\person-list\person-list.html"*/'<!--\n  Generated template for the PersonListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>居民信息</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content style="padding:5px">\n    <ion-searchbar\n    [(ngModel)]="searchText"\n    [showCancelButton]="shouldShowCancel" placeholder="搜索">\n  </ion-searchbar>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\person-list\person-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], PersonListPage);
+    return PersonListPage;
+}());
+
+//# sourceMappingURL=person-list.js.map
+
+/***/ }),
+
+/***/ 116:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyEventPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(22);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the MyEventPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var MyEventPage = (function () {
+    function MyEventPage(navCtrl, navParams, http, actionSheetCtrl, dom) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.dom = dom;
+        this.queryParam = {
+            Search: '',
+            Limit: 10,
+            Offset: 0
+        };
+    }
+    MyEventPage.prototype.ionViewWillEnter = function () {
+        this.queryParam.Offset = 0;
+        this.loadEvent();
+    };
+    MyEventPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad MyEventPage');
+    };
+    MyEventPage.prototype.loadEvent = function () {
+        var _this = this;
+        this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.App/App/MyEventList", this.queryParam, {}).subscribe(function (data) {
+            //this.events=data;     
+            if (data["Success"]) {
+                _this.events = data["Response"]["rows"];
+                _this.queryParam.Offset += data["Response"]["rows"].length;
+            }
+        }, function (err) {
+            alert("错误");
+        });
+    };
+    MyEventPage.prototype.assembleHTML = function (event) {
+        var html = (event.HUserID || event.PUserID) + ":" + event.LatestResultDetail;
+        return this.dom.bypassSecurityTrustHtml(html);
+    };
+    /**
+     * doInfinite
+     */
+    MyEventPage.prototype.doInfinite = function (infiniteScroll) {
+        var _this = this;
+        this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.App/App/MyEventList", this.queryParam, {}).subscribe(function (data) {
+            //this.events=data;     
+            if (data["Success"]) {
+                _this.queryParam.Offset += data["Response"]["rows"].length;
+                data["Response"]["rows"].forEach(function (element) {
+                    _this.events.push(element);
+                });
+                if (_this.events.length >= data["Response"]["total"]) {
+                    infiniteScroll.enable(false);
+                }
+            }
+            infiniteScroll.complete();
+        }, function (err) {
+            alert("错误");
+        });
+    };
+    MyEventPage.prototype.dealEvent = function (event) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__["a" /* DetailEventPage */], { event: event });
+    };
+    MyEventPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-my-event',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\my-event\my-event.html"*/'<!--\n  Generated template for the MyEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>我的事件</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content style="padding:5px">\n    <ion-item *ngFor="let event of events" (click)="dealEvent(event)">\n        <ion-thumbnail item-start>\n          <img [src]="event.LatestResultPhoto||\'assets/imgs/ic_launcher.png\'">\n        </ion-thumbnail>\n        <h3>{{event.EventItemTypeName+"["}}{{event.PUserID+"]"}}</h3>\n        <p *ngIf="event.LatestResultDetail" [innerHTML]="assembleHTML(event)"></p>\n        <p style="float:left">{{event.LatestResultTime}}</p>\n        <p style="float:right">{{event.Type}}</p>\n    \n      </ion-item>\n      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n          <ion-infinite-scroll-content  loadingSpinner="bubbles"\n          loadingText="加载更多"></ion-infinite-scroll-content>\n        </ion-infinite-scroll>\n</ion-content>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\my-event\my-event.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__["c" /* DomSanitizer */]])
+    ], MyEventPage);
+    return MyEventPage;
+}());
+
+//# sourceMappingURL=my-event.js.map
+
+/***/ }),
+
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1038,113 +1195,7 @@ var LoginPage = (function () {
 
 /***/ }),
 
-/***/ 116:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyEventPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(22);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the MyEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var MyEventPage = (function () {
-    function MyEventPage(navCtrl, navParams, http, actionSheetCtrl, dom) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.dom = dom;
-        this.queryParam = {
-            Search: '',
-            Limit: 10,
-            Offset: 0
-        };
-    }
-    MyEventPage.prototype.ionViewWillEnter = function () {
-        this.queryParam.Offset = 0;
-        this.loadEvent();
-    };
-    MyEventPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad MyEventPage');
-    };
-    MyEventPage.prototype.loadEvent = function () {
-        var _this = this;
-        this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.App/App/MyEventList", this.queryParam, {}).subscribe(function (data) {
-            //this.events=data;     
-            if (data["Success"]) {
-                _this.events = data["Response"]["rows"];
-                _this.queryParam.Offset += data["Response"]["rows"].length;
-            }
-        }, function (err) {
-            alert("错误");
-        });
-    };
-    MyEventPage.prototype.assembleHTML = function (event) {
-        var html = (event.HUserID || event.PUserID) + ":" + event.LatestResultDetail;
-        return this.dom.bypassSecurityTrustHtml(html);
-    };
-    /**
-     * doInfinite
-     */
-    MyEventPage.prototype.doInfinite = function (infiniteScroll) {
-        var _this = this;
-        this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* AppConfig */].appUrl + "/Dcqtech.App/App/MyEventList", this.queryParam, {}).subscribe(function (data) {
-            //this.events=data;     
-            if (data["Success"]) {
-                _this.queryParam.Offset += data["Response"]["rows"].length;
-                data["Response"]["rows"].forEach(function (element) {
-                    _this.events.push(element);
-                });
-                if (_this.events.length >= data["Response"]["total"]) {
-                    infiniteScroll.enable(false);
-                }
-            }
-            infiniteScroll.complete();
-        }, function (err) {
-            alert("错误");
-        });
-    };
-    MyEventPage.prototype.dealEvent = function (event) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__detail_event_detail_event__["a" /* DetailEventPage */], { event: event });
-    };
-    MyEventPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-event',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\my-event\my-event.html"*/'<!--\n  Generated template for the MyEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>我的事件</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content style="padding:5px">\n    <ion-item *ngFor="let event of events" (click)="dealEvent(event)">\n        <ion-thumbnail item-start>\n          <img [src]="event.LatestResultPhoto||\'assets/imgs/ic_launcher.png\'">\n        </ion-thumbnail>\n        <h3>{{event.EventItemTypeName+"["}}{{event.PUserID+"]"}}</h3>\n        <p *ngIf="event.LatestResultDetail" [innerHTML]="assembleHTML(event)"></p>\n        <p style="float:left">{{event.LatestResultTime}}</p>\n        <p style="float:right">{{event.Type}}</p>\n    \n      </ion-item>\n      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n          <ion-infinite-scroll-content  loadingSpinner="bubbles"\n          loadingText="加载更多"></ion-infinite-scroll-content>\n        </ion-infinite-scroll>\n</ion-content>'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\my-event\my-event.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__["c" /* DomSanitizer */]])
-    ], MyEventPage);
-    return MyEventPage;
-}());
-
-//# sourceMappingURL=my-event.js.map
-
-/***/ }),
-
-/***/ 117:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1489,51 +1540,6 @@ var PresentEventPage = (function () {
 
 /***/ }),
 
-/***/ 118:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the PersonListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var PersonListPage = (function () {
-    function PersonListPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    PersonListPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PersonListPage');
-    };
-    PersonListPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-person-list',template:/*ion-inline-start:"D:\Projects\Cordova\Zhsq\src\pages\person-list\person-list.html"*/'<!--\n  Generated template for the PersonListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>居民信息</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content style="padding:5px">\n    <ion-searchbar\n    [(ngModel)]="searchText"\n    [showCancelButton]="shouldShowCancel" placeholder="搜索">\n  </ion-searchbar>\n</ion-content>\n'/*ion-inline-end:"D:\Projects\Cordova\Zhsq\src\pages\person-list\person-list.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], PersonListPage);
-    return PersonListPage;
-}());
-
-//# sourceMappingURL=person-list.js.map
-
-/***/ }),
-
 /***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1627,15 +1633,15 @@ var AppConfig = (function () {
 
 var map = {
 	"../pages/audio/audio.module": [
-		312,
+		311,
 		11
 	],
 	"../pages/car-list/car-list.module": [
-		311,
+		313,
 		10
 	],
 	"../pages/deal-event/deal-event.module": [
-		313,
+		312,
 		9
 	],
 	"../pages/detail-event/detail-event.module": [
@@ -1651,7 +1657,7 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		317,
+		319,
 		5
 	],
 	"../pages/my-event/my-event.module": [
@@ -1659,7 +1665,7 @@ var map = {
 		4
 	],
 	"../pages/person-list/person-list.module": [
-		319,
+		317,
 		3
 	],
 	"../pages/picture/picture.module": [
@@ -1701,7 +1707,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_event_my_event__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__present_event_present_event__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event_list_event_list__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1808,9 +1814,9 @@ var EventPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__person_list_person_list__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_list_room_list__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__car_list_car_list__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__car_list_car_list__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2002,12 +2008,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_file_transfer__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_file__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_media__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_event_my_event__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_car_list_car_list__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_deal_event_deal_event__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_car_list_car_list__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_deal_event_deal_event__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_present_event_present_event__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_person_list_person_list__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_room_list_room_list__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_audio_audio__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_event_list_event_list__ = __webpack_require__(113);
@@ -2099,15 +2105,15 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/audio/audio.module#AudioPageModule', name: 'AudioPage', segment: 'audio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/deal-event/deal-event.module#DealEventPageModule', name: 'dealevent', segment: 'deal:EventId', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/car-list/car-list.module#CarListPageModule', name: 'CarListPage', segment: 'car-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/detail-event/detail-event.module#DetailEventPageModule', name: 'detailevent', segment: 'detail:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/event-list/event-list.module#EventListPageModule', name: 'EventListPage', segment: 'event-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/my-event/my-event.module#MyEventPageModule', name: 'myevent', segment: 'myevent', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/person-list/person-list.module#PersonListPageModule', name: 'PersonListPage', segment: 'person-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/my-event/my-event.module#MyEventPageModule', name: 'myevent', segment: 'myevent', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/picture/picture.module#PicturePageModule', name: 'PicturePage', segment: 'picture', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/present-event/present-event.module#PresentEventPageModule', name: 'presentevent', segment: 'presentevent', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/room-list/room-list.module#RoomListPageModule', name: 'RoomListPage', segment: 'room-list', priority: 'low', defaultHistory: [] }
@@ -2175,7 +2181,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(14);
@@ -2626,7 +2632,7 @@ var AudioPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deal_event_deal_event__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__deal_event_deal_event__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__audio_audio__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__picture_picture__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(22);

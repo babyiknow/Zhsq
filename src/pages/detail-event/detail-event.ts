@@ -25,11 +25,13 @@ export class DetailEventPage {
   event;
   appUrl;
   eventResultList;
+  hasPermission;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, private domSanitizer: DomSanitizer,
     private toastCtrl: ToastController, private loadCtrl: LoadingController, private modalCtrl: ModalController) {
     this.eventResultList = [];
     this.event = this.navParams.get("event");
     this.appUrl = AppConfig.appUrl;
+    this.hasPermission= this.navParams.get("hasPermission");
   }
   ionViewWillEnter() {
     this.getEventResultList();

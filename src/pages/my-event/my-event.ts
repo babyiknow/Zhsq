@@ -28,6 +28,7 @@ export class MyEventPage {
     Limit: 10,
     Offset: 0
   };
+  hasPermission:boolean=true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public actionSheetCtrl: ActionSheetController,
   private dom:DomSanitizer) {
   
@@ -46,6 +47,7 @@ export class MyEventPage {
       if (data["Success"]) {
         this.events = data["Response"]["rows"];   
         this.queryParam.Offset += data["Response"]["rows"].length;
+        this.hasPermission=data["Response"]["HasPermission"];
       }
     }, err => {
       alert("错误");
@@ -76,6 +78,6 @@ export class MyEventPage {
     })
   }
   public dealEvent(event) {
-    this.navCtrl.push(DetailEventPage, { event: event });
+    this.navCtrl.push(DetailEventPage, { event: event,hasPermission:this.hasPermission });
   }
 }

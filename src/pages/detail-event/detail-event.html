@@ -39,7 +39,7 @@
             </div>
           </div>
           <a id="cd-read-more" class="disable-hover button button-md button-default button-default-md button-small button-small-md"
-            (click)="dealWith(eventResult)" style="float:right;line-height: 2.1em" *ngIf=" i==0&&(eventResult.Type != '提交审核' && eventResult.Type != '审核通过')">{{(eventResult["Type"] === '上报' ||eventResult["Type"] === '待接手' ||eventResult["Type"]=== '驳回')?"领取":"处理"}}</a>
+            (click)="dealWith(eventResult)" style="float:right;line-height: 2.1em" *ngIf=" hasPermission&&i==0&&(eventResult.Type != '提交审核' && eventResult.Type != '审核通过')">{{(eventResult["Type"] === '上报' ||eventResult["Type"] === '待接手' ||eventResult["Type"]=== '驳回')?"领取":"处理"}}</a>
           <span style="font-size:15px" class="cd-date">{{eventResult.Date}}</span>
         </div>
 

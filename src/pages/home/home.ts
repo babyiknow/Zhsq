@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app/app.config';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
 import { BackgroundMode } from '@ionic-native/background-mode';
-import { BatteryStatus,BatteryStatusResponse } from '@ionic-native/battery-status';
+import { BatteryStatus, BatteryStatusResponse } from '@ionic-native/battery-status';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -28,6 +28,7 @@ export class HomePage {
   postHeartId;
   PI;
   batterysubscription;
+  checkNetOnlineId;
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
@@ -51,10 +52,9 @@ export class HomePage {
         Y: 0
       };
       this.truePts = [];
-      this.configureBackgroundGeoLocation();  
+      this.configureBackgroundGeoLocation();
       this.batterysubscription = this.batteryStatus.onChange().subscribe(
         (status: BatteryStatusResponse) => {
-          //console.log(status.level, status.isPlugged);
           this.backgroundGeolocation.start();
           clearInterval(this.postId);
           this.postId = null;
@@ -62,28 +62,34 @@ export class HomePage {
           this.postHeartId = null;
           this.post();
         }
-       );
-      // platform.pause.subscribe(() => {
-      //   if (this.isCheck) {
-      //     this.watchId.unsubscribe();
-      //     this.watchId = null;
-      //     this.backgroundGeolocation.start();
-      //   }
-      // });
-      // platform.resume.subscribe(() => {
-      //   if (this.isCheck) {
-      //     this.backgroundGeolocation.stop();
-      //     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
-      //       this.getPositionSuccess(position.coords);
-      //     }, err => {
-      //       alert(err.message)
-      //     });
-      //   }
-
-      // })
+      );
       this.loadEsri();
-     
+
     });
+  }
+  private addNetEvent() {
+    this.checkNetOnlineId = setInterval(() => {
+      if (!AppConfig.online) {
+        let timeoutId = setTimeout(() => {
+          if (!AppConfig.online) {
+            this.removeNetEvent();         
+            this.stopInspection();
+            this.backgroundGeolocation.stop();
+            this.isCheck = false;
+            this.imgSrc = "assets/imgs/startCheck.png";
+            this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
+          }
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }, 300000);
+
+      }
+
+    }, 1500);
+  }
+  private removeNetEvent() {
+    clearInterval(this.checkNetOnlineId);
+    this.checkNetOnlineId = null;
   }
   private configureBackgroundGeoLocation() {
     const config: BackgroundGeolocationConfig = {
@@ -158,22 +164,26 @@ export class HomePage {
       this.postId = null;
       clearInterval(this.postHeartId);
       this.postHeartId = null;
+      this.removeNetEvent();
 
     }
     else {
-     // this.backgroundMode.enable();
-      this.imgSrc = "assets/imgs/endCheck.gif"; 
+      // this.backgroundMode.enable();
+      this.addNetEvent();
+      this.imgSrc = "assets/imgs/endCheck.gif";
       this.backgroundGeolocation.start();
       this.startInspection();
       this.post();
     }
     this.isCheck = !this.isCheck;
   }
+
   private startInspection() {
     this.watchId = this.geolocation.watchPosition({ timeout: 5000, enableHighAccuracy: true }).subscribe(position => {
+
       this.getPositionSuccess(position.coords);
     }, err => {
-      alert(err.message)
+      this.toastCtrl.create({ message: err.message, duration: 500 }).present();
     });
   }
   private post() {
@@ -231,13 +241,8 @@ export class HomePage {
       if (!this.isCheck) {
         return;
       }
-      if (!AppConfig.online) {
-        this.stopInspection();
-        this.backgroundGeolocation.stop();
-        this.isCheck = false;
-        this.imgSrc = "assets/imgs/startCheck.png";
-        this.alertCtrl.create({ title: '提示', subTitle: '网络已断开，巡检结束!', buttons: ['确定'] }).present();
-      }
+     
+
 
       if (location !== undefined) {
         if (this.lastX != this.lastY) {

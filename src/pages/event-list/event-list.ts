@@ -73,6 +73,6 @@ export class EventListPage {
     })
   }
   public dealEvent(event) {
-    this.navCtrl.push(DetailEventPage, { event: event });
+    this.navCtrl.push(DetailEventPage, { event: event,hasPermission:true });
   }
 }

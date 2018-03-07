@@ -224,7 +224,7 @@ export class PresentEventPage {
           text: '拍照',
           handler: () => {
             let options: CameraOptions = {
-              quality: 80,
+              quality: 50,
               destinationType: this.camera.DestinationType.FILE_URI,
               encodingType: this.camera.EncodingType.JPEG,
               mediaType: this.camera.MediaType.PICTURE
@@ -241,7 +241,7 @@ export class PresentEventPage {
           text: '相册选取',
           handler: () => {
             let options: CameraOptions = {
-              quality: 80,
+              quality:50,
               destinationType: this.camera.DestinationType.DATA_URL,
               encodingType: this.camera.EncodingType.JPEG,
               mediaType: this.camera.MediaType.PICTURE,
